@@ -1,0 +1,27 @@
+# =============================================================================
+# .gitattributes · la traduzione degli a capo si spegne anche fuori di qui
+#
+# Questo file e la meta distribuibile di quello che vive alla radice del progetto,
+# e nasce il 2026-08-11 dalla prima pubblicazione su un repo remoto.
+#
+# Perche serve due volte. Alla radice del progetto la .gitattributes protegge i
+# file generati dentro il repo di sviluppo. Ma il plugin viaggia da solo: quando
+# l'albero distribuibile diventa la RADICE di un repo di pubblicazione, quel file
+# resta indietro, e su una macchina con `core.autocrlf` acceso git traduce gli a
+# capo al checkout. Misurato alla prima pubblicazione: 101 file su 114 tornavano
+# dal clone con `\r\n`, identici parola per parola e diversi byte per byte.
+#
+# Perche i percorsi non hanno il prefisso. Li dentro il repo di progetto i file
+# stanno sotto `plugin/`; qui il plugin e la radice, quindi il prefisso cade. Sono
+# gli stessi file e le stesse regole, viste da un'altra radice.
+#
+# Perche un elenco stretto e non `* text=auto eol=lf`. E la stessa ragione scritta
+# nel gemello di progetto: si dichiara cio che ha bisogno della garanzia byte per
+# byte, e ogni file generato che arriva aggiunge la sua riga come gesto visibile.
+# =============================================================================
+
+# Una riga sola, e copre tutto. Nel gemello di progetto l'elenco e stretto perche
+# li dentro c'e anche cio che non e distribuibile; qui dentro tutto e
+# distribuibile, e tutto deve arrivare a chi installa byte per byte come i
+# cancelli lo hanno misurato.
+* text eol=lf

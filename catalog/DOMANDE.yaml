@@ -1,0 +1,592 @@
+# Questo file e prodotto da `scripts/genera_catalogo.py` e non si corregge
+# a mano. La sorgente vive nel ramo che non si distribuisce: un errore si
+# corregge la' e si rigenera. Verso questo albero si scrive solo con
+# `scripts/scrivi_distribuibile.py`, e `--verifica` confronta byte per byte.
+N01_FONDAMENTALI_DELLA_VENDITA:
+- chiave: principi_dichiarati
+  domanda: Quali sono i principi di vendita che valgono in tutto il tuo reparto, indipendentemente dalla
+    fase?
+  quando: assente o parziale
+- chiave: dove_sono_scritti
+  domanda: In quale documento un venditore li trova, e in che punto?
+  quando: assente o parziale
+- chiave: cadenza_di_ripasso
+  domanda: Ogni quanti giorni i tuoi venditori tornano su quel documento?
+  quando: parziale
+N02_PERCORSO_DAL_LEAD_AL_CLIENTE:
+- chiave: stadi_del_percorso
+  domanda: Quali sono le fasi che un tuo lead attraversa dal primo contatto al pagamento?
+  quando: assente o parziale
+- chiave: criterio_di_passaggio
+  domanda: Per ogni fase, che cosa deve essere vero perche il lead passi a quella dopo?
+  quando: assente o parziale
+- chiave: tempo_fra_gli_stadi
+  domanda: Quanto tempo passa fra una fase e la successiva, quando le cose vanno come devono?
+  quando: parziale
+- chiave: responsabile_di_stadio
+  domanda: Chi possiede ogni fase, cioe chi risponde se un lead si ferma li?
+  quando: parziale
+N03_PREPARAZIONE_DELLA_CHIAMATA:
+- chiave: cosa_si_guarda_prima
+  domanda: Che cosa guarda un tuo venditore prima di chiamare, e in che ordine?
+  quando: assente o parziale
+- chiave: dove_stanno_i_dati
+  domanda: Da dove apre quelle informazioni?
+  quando: parziale
+- chiave: tempo_di_preparazione
+  domanda: Quanti minuti ci mette?
+  quando: parziale
+N04_SCOPERTA:
+- chiave: domande_di_scoperta
+  domanda: Quali domande fanno i tuoi venditori nella prima chiamata, e che cosa deve emergere da ognuna?
+  quando: assente o parziale
+- chiave: criterio_di_uscita
+  domanda: A quali informazioni un venditore deve essere arrivato per poter chiudere la chiamata di scoperta?
+  quando: assente o parziale
+- chiave: profondita_minima
+  domanda: Quante volte i tuoi venditori tornano sullo stesso problema prima di accontentarsi della risposta?
+  quando: parziale
+- chiave: durata_prevista
+  domanda: Quanti minuti dura una chiamata di scoperta nel tuo reparto?
+  quando: parziale
+N05_CHIUSURA:
+- chiave: struttura_della_closing
+  domanda: Come e fatta la chiamata di chiusura nel tuo reparto, passaggio per passaggio?
+  quando: assente o parziale
+- chiave: modo_di_chiedere
+  domanda: Con quali parole i tuoi venditori chiedono la decisione?
+  quando: assente o parziale
+- chiave: silenzio_dopo
+  domanda: Che cosa fanno subito dopo averla chiesta?
+  quando: parziale
+- chiave: durata_prevista
+  domanda: Quanti minuti dura una closing che va bene?
+  quando: parziale
+N06_OBIEZIONI_E_RESISTENZE:
+- chiave: obiezioni_ricorrenti
+  domanda: Quali sono le obiezioni che i tuoi lead ti fanno piu spesso, e con che frequenza ciascuna?
+  quando: assente o parziale
+- chiave: risposta_per_obiezione
+  domanda: Per ognuna, come lavorano oggi i tuoi venditori?
+  quando: assente o parziale
+- chiave: tecnica_di_isolamento
+  domanda: Come fanno a capire se l'obiezione detta e quella vera?
+  quando: parziale
+- chiave: soglia_di_rilancio
+  domanda: Dopo quanti tentativi su una stessa obiezione i tuoi venditori si fermano?
+  quando: parziale
+N07_FOLLOW_UP_E_NURTURING:
+- chiave: categorie_di_lead
+  domanda: In quali categorie dividi chi non ha comprato?
+  quando: assente o parziale
+- chiave: cadenza_per_categoria
+  domanda: Ogni quanti giorni ricontatti ciascuna categoria?
+  quando: assente o parziale
+- chiave: messaggi_pronti
+  domanda: Quali messaggi mandi a ciascuna?
+  quando: parziale
+- chiave: criterio_di_chiusura
+  domanda: Quando smetti di richiamare qualcuno?
+  quando: assente o parziale
+N08_COPIONE_DI_PRIMO_CONTATTO:
+- chiave: testo_apertura_freddo
+  domanda: Con quali parole i tuoi venditori aprono la chiamata a chi non e mai stato contattato?
+  quando: assente o parziale
+- chiave: testo_apertura_ricontatto
+  domanda: E con quali parole aprono con chi era gia stato contattato?
+  quando: assente o parziale
+- chiave: dove_e_conservato
+  domanda: Dove tengono quel copione mentre chiamano?
+  quando: parziale
+- chiave: durata_prevista
+  domanda: Quanti minuti dura quella prima chiamata?
+  quando: parziale
+N09_COPIONE_SU_CLIENTE_GIA_DENTRO:
+- chiave: motivo_della_chiamata
+  domanda: Per quali motivi richiami un cliente che e gia dentro il percorso?
+  quando: assente o parziale
+- chiave: testo_del_copione
+  domanda: Con quali parole apri quelle chiamate?
+  quando: assente o parziale
+- chiave: esito_atteso
+  domanda: Che cosa deve essere vero quando quella chiamata finisce?
+  quando: parziale
+N10_DOPO_IL_SI:
+- chiave: passaggi_dopo_accordo
+  domanda: Che cosa succede fra il si e il momento in cui il cliente e operativo?
+  quando: assente o parziale
+- chiave: chi_fa_cosa
+  domanda: Chi fa ciascuno di quei passaggi?
+  quando: assente o parziale
+- chiave: tempo_massimo_ingresso
+  domanda: Entro quante ore il cliente deve essere dentro?
+  quando: parziale
+N11_SFIDA_PROIEZIONE_E_COSTO_DELL_INAZIONE:
+- chiave: domande_di_proiezione
+  domanda: Quali domande fanno immaginare al lead come sarebbe la sua vita risolto il problema?
+  quando: assente o parziale
+- chiave: costo_calcolato
+  domanda: Come fate il conto di quanto gli costa non fare niente?
+  quando: assente o parziale
+- chiave: momento_della_sfida
+  domanda: In quale punto della chiamata lo mettete davanti alla contraddizione?
+  quando: parziale
+N12_REGOLE_NON_NEGOZIABILI:
+- chiave: elenco_regole
+  domanda: Quali sono le regole che nel tuo reparto non si negoziano, e perche ciascuna esiste?
+  quando: assente o parziale
+- chiave: conseguenza_per_regola
+  domanda: Che cosa succede a chi non le segue?
+  quando: assente o parziale
+- chiave: setup_obbligatorio
+  domanda: Che cosa deve avere in ordine un venditore nuovo prima di fare la sua prima chiamata?
+  quando: assente o parziale
+- chiave: chi_le_aggiorna
+  domanda: Chi decide quando una regola cambia?
+  quando: parziale
+N13_RAPPORTO_TONO_E_STORYTELLING:
+- chiave: storie_disponibili
+  domanda: Quali storie usano i tuoi venditori, e in quale situazione ciascuna?
+  quando: assente o parziale
+- chiave: tono_per_fase
+  domanda: Con che tono si sta in ogni fase della chiamata?
+  quando: assente o parziale
+- chiave: regola_del_rapporto
+  domanda: Quando si smette di fare conversazione e si entra nel merito?
+  quando: parziale
+N14_FONDAMENTA_DELLA_GESTIONE:
+- chiave: chi_gestisce
+  domanda: Chi ha in mano il reparto vendite oggi?
+  quando: assente o parziale
+- chiave: cosa_decide
+  domanda: Quali decisioni sono sue e di nessun altro?
+  quando: assente o parziale
+- chiave: limiti_dichiarati
+  domanda: Entro quali limiti di budget, tempo e persone si muove?
+  quando: parziale
+N15_PROGETTO_CONTRO_PROCESSO:
+- chiave: cose_che_si_ripetono
+  domanda: Quali attivita del tuo reparto tornano ogni settimana o ogni mese?
+  quando: assente o parziale
+- chiave: cose_che_finiscono
+  domanda: Quali lavori invece hanno una fine, e quando finiscono?
+  quando: assente o parziale
+- chiave: chi_le_distingue
+  domanda: Chi decide, quando arriva una cosa nuova, se e una cosa che si ripetera o una che finisce?
+  quando: parziale
+N16_OBIETTIVO_PRIORITA_E_VALUTA:
+- chiave: obiettivo_del_periodo
+  domanda: Qual e il traguardo del tuo reparto per questo periodo, in cifra e in settimane?
+  quando: assente o parziale
+- chiave: criterio_di_priorita
+  domanda: Quando due lavori chiedono la stessa ora, come scegliete?
+  quando: assente o parziale
+- chiave: valuta_del_reparto
+  domanda: 'Che cosa vi manca di piu oggi: tempo, soldi o persone?'
+  quando: parziale
+N17_I_TRE_RUOLI_DEL_REPARTO:
+- chiave: ruoli_dichiarati
+  domanda: Quali ruoli distinti esistono oggi nel tuo reparto vendite?
+  quando: assente o parziale
+- chiave: compiti_per_ruolo
+  domanda: Che cosa fa ciascun ruolo che nessun altro fa?
+  quando: assente o parziale
+- chiave: a_chi_risponde
+  domanda: Chi risponde a chi?
+  quando: assente o parziale
+- chiave: organico_attuale
+  domanda: Quante persone hai oggi in ciascun ruolo?
+  quando: parziale
+N18_PILASTRI_E_PARAMETRI_DEL_GESTORE:
+- chiave: parametri_del_responsabile
+  domanda: Su quali numeri e misurato chi dirige il tuo reparto?
+  quando: assente o parziale
+- chiave: valore_atteso
+  domanda: Per ognuno, qual e il valore atteso e in quale periodo?
+  quando: assente o parziale
+- chiave: chi_lo_valuta
+  domanda: Chi guarda quei numeri, e ogni quanti giorni?
+  quando: parziale
+N19_MUFFA_ORGANIZZATIVA_E_FEUDO:
+- chiave: zone_non_guardate
+  domanda: Quale parte del tuo reparto nessuno apre da mesi?
+  quando: assente o parziale
+- chiave: chi_le_apre
+  domanda: Chi ha il compito di guardarci dentro?
+  quando: assente o parziale
+- chiave: cadenza_di_controllo
+  domanda: Ogni quanti giorni ci si guarda?
+  quando: parziale
+N20_METRICHE_DEL_VENDITORE:
+- chiave: metriche_seguite
+  domanda: Quali numeri segue oggi ogni tuo venditore?
+  quando: assente o parziale
+- chiave: valore_di_riferimento
+  domanda: Per ognuno, qual e la fascia che consideri normale e sotto quale valore intervieni?
+  quando: assente o parziale
+- chiave: cadenza_di_lettura
+  domanda: Ogni quanti giorni quei numeri vengono guardati?
+  quando: parziale
+- chiave: chi_le_guarda
+  domanda: Chi li guarda oltre al venditore stesso?
+  quando: parziale
+N21_MERCATO_E_QUADRO_ECONOMICO:
+- chiave: compenso_dei_venditori
+  domanda: Come sono pagati i tuoi venditori, fra fisso e variabile, e su quale numero si calcola il variabile?
+  quando: assente o parziale
+- chiave: quanto_guadagna_un_bravo
+  domanda: Quanto porta a casa in un mese uno dei tuoi venditori che va bene?
+  quando: assente o parziale
+- chiave: durata_media_ruolo
+  domanda: Quanti mesi resta in media un venditore prima di andarsene?
+  quando: parziale
+N22_PSICOLOGIA_DEL_COMPRATORE:
+- chiave: direzioni_riconosciute
+  domanda: I tuoi lead comprano per scappare da qualcosa o per raggiungere qualcosa, e come li distinguete?
+  quando: assente o parziale
+- chiave: velocita_riconosciute
+  domanda: Distinguete chi decide in fretta da chi ci mette tempo?
+  quando: assente o parziale
+- chiave: come_si_riconosce
+  domanda: Da che cosa lo capite durante la chiamata?
+  quando: parziale
+N23_CULTURA_DELL_ERRORE:
+- chiave: cosa_si_fa_con_un_errore
+  domanda: Quando uno dei tuoi sbaglia, che cosa succede esattamente?
+  quando: assente o parziale
+- chiave: chi_lo_dichiara
+  domanda: Chi lo porta a galla, e entro quante ore?
+  quando: assente o parziale
+- chiave: errori_riusati
+  domanda: Quali regole del tuo reparto nascono da un errore vero?
+  quando: parziale
+N24_RIPRESA_CALIBRATA:
+- chiave: dove_si_riprende
+  domanda: Quando devi riprendere qualcuno, lo fai davanti agli altri o da solo a solo?
+  quando: assente o parziale
+- chiave: entro_quanto
+  domanda: Entro quante ore dal fatto?
+  quando: assente o parziale
+- chiave: come_si_chiude
+  domanda: Come verifichi che sia servita, e dopo quanti giorni?
+  quando: parziale
+N25_VALORE_DEL_TEMPO:
+- chiave: ore_di_vendita_a_settimana
+  domanda: Quante ore a settimana un tuo venditore passa davvero in chiamata?
+  quando: assente o parziale
+- chiave: cosa_consuma_il_tempo
+  domanda: Che cosa gli porta via il resto delle ore?
+  quando: assente o parziale
+- chiave: regola_di_protezione
+  domanda: C'e una fascia oraria in cui non lo si interrompe?
+  quando: parziale
+N26_LEGGE_DEL_COPERCHIO:
+- chiave: tetto_riconosciuto
+  domanda: Chi e la persona il cui livello mette un tetto a quello del reparto?
+  quando: assente o parziale
+- chiave: cosa_lo_alza
+  domanda: Che cosa alzerebbe quel livello?
+  quando: assente o parziale
+- chiave: investimento_in_formazione
+  domanda: Quante ore o quanti euro all'anno metti sulla formazione di chi guida?
+  quando: parziale
+N27_INFLUENZA_E_PROCESSO:
+- chiave: chi_ha_influenza
+  domanda: Chi nel tuo reparto viene ascoltato anche quando non ha il ruolo per farsi ascoltare?
+  quando: assente o parziale
+- chiave: come_l_ha_costruita
+  domanda: Da che cosa viene quel credito?
+  quando: assente o parziale
+- chiave: percorso_di_crescita
+  domanda: In quanti mesi, e attraverso quali passaggi, porti una persona a guidarne altre?
+  quando: parziale
+N28_VALORI_E_TRASPARENZA:
+- chiave: valori_dichiarati
+  domanda: Quali sono i valori della tua azienda, scritti?
+  quando: assente o parziale
+- chiave: comportamento_per_valore
+  domanda: Per ognuno, che cosa fa una persona che lo rispetta e che cosa fa una che lo tradisce?
+  quando: assente o parziale
+- chiave: cosa_si_dice_a_tutti
+  domanda: Quali numeri vede tutto il reparto, e ogni quanto?
+  quando: assente o parziale
+N29_LEGGE_DELLA_NAVIGAZIONE:
+- chiave: orizzonte_di_piano
+  domanda: Fino a quanti mesi avanti e pianificato il lavoro del tuo reparto?
+  quando: assente o parziale
+- chiave: cadenza_di_revisione
+  domanda: Ogni quanti giorni quel piano viene rivisto?
+  quando: assente o parziale
+- chiave: chi_traccia_la_rotta
+  domanda: Chi lo scrive, e con chi lo condivide prima di partire?
+  quando: parziale
+N30_IL_MANSIONARIO_COME_STRUMENTO:
+- chiave: dove_vive_il_mansionario
+  domanda: Dove sta il documento che dice ai tuoi venditori come si lavora, e si puo cercare dentro?
+  quando: assente o parziale
+- chiave: quando_si_apre
+  domanda: In quali momenti della giornata lo aprono davvero?
+  quando: assente o parziale
+- chiave: chi_lo_aggiorna
+  domanda: Chi lo aggiorna, e quando?
+  quando: assente o parziale
+- chiave: cadenza_di_rilettura
+  domanda: Ogni quanti giorni ci tornano sopra?
+  quando: parziale
+N31_OFFERTA_E_PROVE_DELL_AZIENDA:
+- chiave: cosa_vendi
+  domanda: In una frase, che trasformazione prometti, a chi, e con quale mezzo?
+  quando: assente o parziale
+- chiave: prezzo_e_modalita
+  domanda: A che prezzo, e con quali modalita di pagamento?
+  quando: assente o parziale
+- chiave: prove_disponibili
+  domanda: Quali risultati dei tuoi clienti puoi nominare in chiamata, con la cifra e il tempo?
+  quando: assente o parziale
+- chiave: credenziali
+  domanda: Quali numeri della tua azienda porti come credenziale?
+  quando: parziale
+N32_CLIENTE_IDEALE_DELL_AZIENDA:
+- chiave: chi_e_il_lead
+  domanda: Chi e la persona che compra da te, in tre tratti?
+  quando: assente o parziale
+- chiave: da_dove_arriva
+  domanda: Da quali canali arrivano i tuoi lead, e in che proporzione?
+  quando: assente o parziale
+- chiave: cosa_gli_manca
+  domanda: Con quale problema arriva da te?
+  quando: assente o parziale
+- chiave: chi_non_e_cliente
+  domanda: Chi non e un tuo cliente, anche se sembra?
+  quando: parziale
+N33_STRUMENTI_E_RECAPITI_DELL_AZIENDA:
+- chiave: strumenti_in_uso
+  domanda: Quali strumenti apre ogni giorno un tuo venditore, e per farci cosa?
+  quando: assente o parziale
+- chiave: dove_stanno_i_documenti
+  domanda: Da quale posto unico li raggiunge tutti?
+  quando: assente o parziale
+- chiave: recapiti_di_servizio
+  domanda: A chi scrive quando uno di quelli non funziona?
+  quando: parziale
+N34_MATERIALE_SORGENTE_DEL_CORPUS:
+- chiave: documenti_di_origine
+  domanda: Da quali materiali nasce il metodo che il tuo reparto usa, e di che data sono?
+  quando: assente o parziale
+- chiave: chi_li_ha_prodotti
+  domanda: Chi li ha scritti o tenuti?
+  quando: assente o parziale
+- chiave: dove_sono_conservati
+  domanda: Da quale posto unico si aprono?
+  quando: parziale
+N35_I_CINQUE_LIVELLI_DELLA_LEADERSHIP:
+- chiave: livello_dichiarato
+  domanda: 'A che titolo le tue persone seguono chi le guida oggi: perche deve, perche vuole, o per rispetto?'
+  quando: assente o parziale
+- chiave: segnale_del_livello
+  domanda: Da quali comportamenti lo vedi?
+  quando: assente o parziale
+- chiave: cosa_manca_per_salire
+  domanda: Che cosa manca a ciascuno per salire di un gradino?
+  quando: parziale
+N36_IMPERATIVO_DEL_COMANDO:
+- chiave: chi_decide_in_stallo
+  domanda: Quando il tuo reparto e diviso e nessuno cede, chi chiude la questione?
+  quando: assente o parziale
+- chiave: tempo_massimo_di_stallo
+  domanda: Entro quanto tempo si decide comunque?
+  quando: assente o parziale
+- chiave: cosa_succede_dopo
+  domanda: Dopo che ha deciso, la cosa si discute ancora?
+  quando: parziale
+N37_IL_CASO_STUDIO_STORICO:
+- chiave: caso_di_riferimento
+  domanda: C'e una storia che tutti nel tuo reparto conoscono e che usate come metro comune?
+  quando: assente o parziale
+- chiave: parallelo_col_reparto
+  domanda: In che cosa somiglia alla vostra situazione?
+  quando: assente o parziale
+- chiave: quando_si_usa
+  domanda: In quale occasione la tirate fuori?
+  quando: parziale
+N38_CRESCERE_CONTRO_EVOLVERE:
+- chiave: obiettivo_di_crescita
+  domanda: Dove vuoi che sia il tuo reparto fra dodici mesi, in cifra?
+  quando: assente o parziale
+- chiave: cosa_deve_cambiare
+  domanda: Che cosa dovete fare in modo diverso per arrivarci, non solo di piu?
+  quando: assente o parziale
+- chiave: vincolo_attuale
+  domanda: Che cosa vi tiene fermi oggi, e chi lo puo togliere?
+  quando: parziale
+N39_FORMULE_E_PRINCIPI_CARDINE:
+- chiave: principi_di_decisione
+  domanda: Su quali principi chi guida il tuo reparto prende le decisioni difficili?
+  quando: assente o parziale
+- chiave: esempio_di_applicazione
+  domanda: Per ognuno, ricordi una decisione vera in cui e stato applicato?
+  quando: assente o parziale
+- chiave: chi_li_puo_invocare
+  domanda: Un venditore puo invocarli contro una decisione di chi lo dirige?
+  quando: parziale
+N41_LE_TRE_LEVE_DELLA_VENDITA:
+- chiave: leve_dichiarate
+  domanda: Secondo te che cosa muove davvero una vendita nel tuo mercato?
+  quando: assente o parziale
+- chiave: peso_per_leva
+  domanda: Se dovessi dare una percentuale a ciascuna, quale daresti?
+  quando: assente o parziale
+- chiave: dove_si_lavora_oggi
+  domanda: Su quale di quelle il tuo reparto sta mettendo piu ore in questo momento?
+  quando: parziale
+N42_APERTURA_E_PRESA_DI_CONTROLLO:
+- chiave: regole_della_conversazione
+  domanda: Che cosa dicono i tuoi venditori all'inizio della chiamata su come andra?
+  quando: assente o parziale
+- chiave: momento_della_presa
+  domanda: In quale momento della chiamata prendono in mano l'ordine dei fatti?
+  quando: assente o parziale
+- chiave: segnali_di_perdita
+  domanda: Da che cosa capiscono di aver perso il controllo della conversazione?
+  quando: parziale
+N43_IL_PITCH:
+- chiave: struttura_del_pitch
+  domanda: Come e fatta la presentazione della tua soluzione, passaggio per passaggio?
+  quando: assente o parziale
+- chiave: cosa_si_personalizza
+  domanda: Quali parti cambiano a seconda di quello che il lead ha detto prima?
+  quando: assente o parziale
+- chiave: durata_prevista
+  domanda: Quanti minuti dura?
+  quando: parziale
+N44_L_ARTE_DELLA_DOMANDA:
+- chiave: tipi_di_domanda
+  domanda: Che tipi di domanda distinguono i tuoi venditori, e a che cosa serve ciascuno?
+  quando: assente o parziale
+- chiave: esempi_per_tipo
+  domanda: Puoi darmi due esempi reali per ogni tipo?
+  quando: assente o parziale
+- chiave: errore_piu_frequente
+  domanda: Riascoltando le chiamate, qual e l'errore sulle domande che senti piu spesso?
+  quando: parziale
+N45_LE_TRE_CERTEZZE_APPLICATE:
+- chiave: certezze_dichiarate
+  domanda: Su quali cose il tuo lead deve essere convinto prima di comprare?
+  quando: assente o parziale
+- chiave: segnale_per_certezza
+  domanda: Da quali frasi capisci quale delle tre e bassa?
+  quando: assente o parziale
+- chiave: leva_per_certezza
+  domanda: Che cosa fanno i tuoi venditori per alzare ciascuna?
+  quando: assente o parziale
+N46_RESPONSABILITA_DI_CHI_VENDE:
+- chiave: dove_finisce_la_responsabilita
+  domanda: Da quale momento un lead diventa responsabilita del venditore, e fino a dove?
+  quando: assente o parziale
+- chiave: cosa_non_e_scusa
+  domanda: Quali giustificazioni senti spesso e non accetti?
+  quando: assente o parziale
+- chiave: come_si_riprende
+  domanda: Quando qualcuno le usa, chi gliene parla ed entro quanti giorni?
+  quando: parziale
+N47_I_CASI_STORICI_DELLA_MENTALITA:
+- chiave: casi_usati_in_aula
+  domanda: Quali casi o storie usi quando formi le tue persone?
+  quando: assente o parziale
+- chiave: lezione_per_caso
+  domanda: Che cosa deve portare a casa chi ascolta, per ciascuno?
+  quando: assente o parziale
+- chiave: dove_si_raccontano
+  domanda: In quale momento della formazione entra ciascuno?
+  quando: parziale
+N48_CHE_COSA_E_LA_MENTALITA:
+- chiave: definizione_in_uso
+  domanda: Quando nel tuo reparto si dice mentalita, che cosa si intende esattamente?
+  quando: assente o parziale
+- chiave: come_si_misura
+  domanda: Da quali risultati la vedi, invece che dedurla?
+  quando: assente o parziale
+- chiave: chi_ne_parla
+  domanda: Chi la porta alle persone, e ogni quanti giorni?
+  quando: parziale
+N49_OBIETTIVO_MENTALITA_ED_EQUILIBRIO:
+- chiave: obiettivo_personale
+  domanda: Sai dove vuole arrivare ciascuno dei tuoi venditori, e in quanto tempo?
+  quando: assente o parziale
+- chiave: cadenza_del_confronto
+  domanda: Ogni quanti giorni ci parli da solo a solo?
+  quando: assente o parziale
+- chiave: segnali_di_cedimento
+  domanda: Da che cosa capisci che una persona sta cedendo, prima che i numeri scendano?
+  quando: parziale
+N50_I_GRADINI_DEL_PERCORSO:
+- chiave: gradini_dichiarati
+  domanda: Quali gradini puo salire una persona che entra nel tuo reparto?
+  quando: assente o parziale
+- chiave: criterio_per_salire
+  domanda: Che cosa deve essere vero, in numeri, perche salga di uno?
+  quando: assente o parziale
+- chiave: tempo_medio_per_gradino
+  domanda: Quanti mesi ci mette in media?
+  quando: parziale
+N51_PONTI_FRA_MENTALITA_E_VENDITA:
+- chiave: convinzioni_da_stanare
+  domanda: Che cosa credono i tuoi venditori sul prezzo e sul sentirsi dire di no?
+  quando: assente o parziale
+- chiave: dove_si_vedono
+  domanda: In quale momento della chiamata quelle convinzioni si vedono?
+  quando: assente o parziale
+- chiave: chi_le_lavora
+  domanda: Chi ne parla col venditore, e ogni quanti giorni?
+  quando: parziale
+N52_DIZIONARIO_DEI_DATI_E_DEGLI_STADI:
+- chiave: stadi_della_pipeline
+  domanda: Quali sono, con il nome esatto che hanno nel tuo strumento, tutti gli stadi in cui un contatto
+    puo trovarsi dal momento in cui entra a quando esce?
+  quando: assente o parziale
+- chiave: regola_di_passaggio
+  domanda: 'Per ognuno di quegli stadi: che cosa fa entrare un contatto li dentro, e che cosa lo fa uscire?'
+  quando: assente o parziale
+- chiave: definizione_di_qualificato
+  domanda: Quali condizioni devono essere vere perche tu chiami un contatto qualificato, e come le verifichi
+    guardando il contatto?
+  quando: assente o parziale
+- chiave: metriche_in_uso
+  domanda: Quali numeri guardi ogni settimana, e per ognuno su che cosa lo dividi per ottenerlo?
+  quando: assente o parziale
+- chiave: soglie_dichiarate
+  domanda: Entro quanti minuti si chiama un contatto nuovo, dopo quanti giorni lo consideri non raggiungibile,
+    e dopo quanti tentativi senza risposta lo qualifichi fuori?
+  quando: assente o parziale
+- chiave: dove_vivono_i_numeri
+  domanda: Dove sta il foglio o lo strumento in cui questi numeri vengono scritti, e chi lo tiene aggiornato?
+  quando: parziale
+N53_CADENZA_OPERATIVA_DEL_REPARTO:
+- chiave: appuntamenti_ricorrenti
+  domanda: Quali momenti fissi ha il tuo reparto ogni settimana o ogni mese, e per ognuno in che giorno,
+    a che ora e per quanto tempo?
+  quando: assente o parziale
+- chiave: ordine_del_giorno
+  domanda: In ognuno di quei momenti, quali punti si toccano e in quale ordine?
+  quando: assente o parziale
+- chiave: chi_porta_quale_numero
+  domanda: Per ogni numero che si guarda in quei momenti, chi e la persona che lo porta gia pronto?
+  quando: assente o parziale
+- chiave: che_cosa_fa_saltare_un_appuntamento
+  domanda: In quale caso uno di questi appuntamenti non si tiene, e chi decide di saltarlo?
+  quando: parziale
+N54_SELEZIONE_E_CANDIDATI:
+- chiave: da_dove_arrivano_i_candidati
+  domanda: Per quali vie ti arrivano i candidati venditori, e quanti ne ha portati ognuna nell ultimo
+    anno?
+  quando: assente o parziale
+- chiave: comportamenti_osservati
+  domanda: Quali comportamenti guardi in un candidato, e in quale momento della selezione li vedi fare?
+  quando: assente o parziale
+- chiave: soglia_minima_candidati
+  domanda: Quanti candidati vuoi che siano stati osservati prima che il sistema ti riporti un andamento
+    ricorrente come tale, invece di tacere?
+  quando: assente o parziale
+- chiave: chi_decide_l_assunzione
+  domanda: Chi prende la decisione finale su un assunzione, e che cosa deve avere davanti per prenderla?
+  quando: parziale

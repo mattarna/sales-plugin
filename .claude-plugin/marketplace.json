@@ -1,0 +1,14 @@
+{
+  "name": "sales-manager-ai-marketplace",
+  "description": "Marketplace a un plugin solo: Sales Manager AI, il direttore vendite Scalers dentro Claude.",
+  "owner": {
+    "name": "Matteo Arnaboldi - Scalers"
+  },
+  "plugins": [
+    {
+      "name": "sales-manager-ai",
+      "source": "./",
+      "description": "Direttore vendite dentro Claude: Scalers Sales System piu le funzioni che producono script, procedure, referti, piani e bozze. Produce artefatti, non li consegna."
+    }
+  ]
+}

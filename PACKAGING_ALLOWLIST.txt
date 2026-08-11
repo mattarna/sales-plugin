@@ -1,0 +1,186 @@
+# =============================================================================
+# PACKAGING_ALLOWLIST.txt · cio che e dichiarato spedibile
+#
+# Elenco IN POSITIVO. Un file di questa cartella che non compare qui viene
+# RILEVATO dal build, che lo nomina con il suo percorso e diventa rosso, invece
+# di ignorarlo in silenzio.
+#
+# CHI RILEVA E CHI IMPEDISCE, perche non sono la stessa cosa e per un ciclo
+# intero questa intestazione ha promesso il contrario.
+#
+#   Il marketplace di questo plugin dichiara la sorgente su QUESTA cartella,
+#   quindi l'installazione la copia per intero. Questo elenco non governa quel
+#   percorso: rileva un file non dichiarato, non ne impedisce la copia.
+#
+#   Cio che IMPEDISCE e un hook git pre-commit, che sta a monte: un file non
+#   dichiarato fa fallire il commit, e senza commit non c'e nessun install e
+#   nessun update da cui possa uscire. Si arma una volta per repo con
+#       python scripts/installa_hook_git.py
+#   e il controllo C8 del cancello di confine diventa rosso se qualcuno lo
+#   disarma. Dove si ferma anche lui: `git commit --no-verify` lo salta, misura
+#   l'albero di lavoro e non l'indice, e un clone nuovo parte disarmato finche
+#   non si lancia quel comando.
+#
+# Perche una allowlist e non una denylist: una denylist che dimentica una riga
+# lascia uscire qualcosa e nessuno se ne accorge. Una allowlist che dimentica
+# una riga fa mancare un pezzo di prodotto, e il build diventa rosso. Con in
+# gioco l'identita di terzi si preferisce sempre il fallimento rumoroso.
+#
+# Formato: un pattern per riga, relativo alla radice del plugin (questa
+# cartella). Righe vuote e righe che iniziano per cancelletto sono commenti.
+# Le stelle valgono dentro un solo segmento di percorso: `skills/*/SKILL.md`
+# non scavalca la barra. Un pattern cosi largo da coprire l'intero albero e
+# rifiutato dal build: sarebbe una denylist scritta male.
+#
+# Le due direzioni dell'errore hanno due codici di uscita diversi:
+#   2 = file presente nell'albero che nessun pattern dichiara
+#   3 = pattern dichiarato qui che non trova piu nessun file
+#
+# Il controllore e `scripts/build_pacchetto.py` alla radice del progetto.
+# =============================================================================
+
+# --- Identita del plugin: manifest e marketplace ---
+# Senza questi due file la cartella non e un plugin, e l'installazione fallisce.
+.claude-plugin/plugin.json
+.claude-plugin/marketplace.json
+
+# --- Faccia pubblica ---
+# Il README e la prima cosa che legge chi riceve il plugin, e dichiara la
+# postura sull'invio come caratteristica di prodotto: esce.
+README.md
+
+# --- Contratto di sviluppo ---
+# Esce perche e utile a chi legge il sorgente e non contiene nulla di privato.
+# Dichiara in prima riga che non vale a runtime, quindi non inganna nessuno.
+CLAUDE.md
+
+# --- Questo elenco stesso ---
+# Esce perche chi riceve il pacchetto deve poter vedere cosa e stato dichiarato.
+# Se non fosse dichiarato qui, il build lo segnalerebbe come file non dichiarato:
+# l'allowlist deve dichiarare anche se stessa.
+PACKAGING_ALLOWLIST.txt
+# `.gitattributes` viaggia col plugin dal 2026-08-11. Quando l'albero
+# distribuibile diventa la radice di un repo di pubblicazione, la
+# .gitattributes del progetto resta indietro e git traduce gli a capo al
+# checkout: 101 file su 114 tornavano dal clone diversi byte per byte.
+# La riga e scritta prima del file, come sempre.
+.gitattributes
+
+# --- Skill: l'unico veicolo che entra nel contesto a runtime ---
+# Pattern e non elenco fisso: una skill nuova nasce gia dichiarata, e quello che
+# la copre e il controllo C2 del cancello di confine, non questa riga.
+skills/*/SKILL.md
+
+# --- Script a runtime ---
+# Oggi solo il README che dichiara cosa puo vivere in quella cartella.
+scripts/README.md
+# `scripts/motore.py` E IL PRIMO SCRIPT CHE GIRA A CASA DI CHI INSTALLA, e la
+# cartella era riservata a questo dal piano 01-01. La riga e scritta PRIMA del
+# file. Il README accanto dice cosa NON puo starci: nessun percorso assoluto,
+# nessun riferimento fuori dalla cartella del plugin, e mai un controllore di
+# progetto, che leggerebbe il ramo privato e a casa dell'utente sarebbe rotto
+# per costruzione.
+scripts/motore.py
+# `scripts/deposita.py` scrive la cartella-prodotto. Come il motore
+# gira a casa di chi installa, e la riga e scritta prima del file.
+scripts/deposita.py
+
+# --- Il profilo astratto dell'istanza ---
+# IL PRIMO FILE GENERATO DAL REGISTRO CHE ESCE VERSO QUESTO ALBERO, e per questo
+# la riga sta qui PRIMA che il file esista: un file dentro `plugin/` che nessun
+# pattern dichiara fa uscire 2 dal build, quindi dichiarare dopo aver scritto
+# vuol dire tenere l'albero non dichiarato per tutto il tempo che passa fra i due
+# gesti. Il prezzo dell'ordine giusto e che fra la riga e il file il build esce 3,
+# cioe pattern senza file, ed e il rosso che si preferisce: dice che manca un
+# pezzo di prodotto, non che ne e uscito uno non dichiarato.
+# Non e un pattern con la stella: il profilo e UN file con un nome deciso, e una
+# stella qui dichiarerebbe in anticipo file che nessuno ha ancora guardato.
+# Chi lo scrive e `scripts/scrivi_distribuibile.py`, mai un editor.
+metodo/profilo/PROFILO_ASTRATTO.md
+
+# --- Il glossario congelato del metodo ---
+# E il secondo prodotto del registro che esce verso questo albero, e la riga sta
+# qui PRIMA che il file esista, per la stessa ragione scritta sopra per il
+# profilo: dichiarare dopo aver scritto vuol dire tenere l'albero non dichiarato
+# per tutto il tempo che passa fra i due gesti. Fra questa riga e il file il build
+# esce 3, cioe pattern senza file, ed e il rosso che si preferisce.
+#
+# Nota di stile con un motivo misurato, 2026-08-07. Questo blocco non ripete in
+# capitali le parole che il blocco del profilo qui sopra scrive maiuscole. Scritte
+# cosi portavano tre parole italiane correnti a tre occorrenze sull'albero, cioe
+# sopra la soglia della rete A2, e il cancello di anonimizzazione ha rifiutato per
+# due volte la scrittura sanzionata con un riscontro non firmato. Il rosso era
+# vero e la causa era questa prosa: si e corretta la prosa, non la rete, e non si
+# e firmata nessuna voce di coda per parole che non identificano nessuno.
+# Il limite che ne esce vale per il prossimo generatore: la soglia e a tre
+# occorrenze sull'intero albero, quindi un'intestazione a capitali ripetuta uguale
+# in tre prodotti diventa rossa da sola.
+# Non e un pattern con la stella: il glossario e un file solo, con un nome deciso.
+# La sorgente e `materiale/04_LESSICO/GLOSSARIO.yaml`, che non esce; qui arriva
+# solo `termine` e `definizione`. Chi lo scrive e `scripts/scrivi_distribuibile.py`,
+# mai un editor, e a rigenerarlo e `scripts/genera_glossario.py`.
+metodo/GLOSSARIO.md
+
+# --- Il registro dei conflitti, piano 07-06, 2026-08-07 ---
+# Scritta PRIMA dei file, come la riga del glossario e quella del profilo: fra
+# questa riga e i file il build esce 3, cioe pattern senza file, ed e il rosso che
+# si preferisce a un albero non dichiarato.
+#
+# QUI LA STELLA E LEGITTIMA E IL MOTIVO E DIVERSO dagli altri due prodotti. Il
+# glossario e il profilo sono file singoli con un nome deciso, quindi la stella
+# sarebbe stata un permesso piu largo del necessario. Le tensioni sono un insieme
+# che CRESCE: oggi ce n'e una, e ogni conflitto che l'estrazione trovera diventera
+# un file nuovo senza che nessuno tocchi questa riga. La stella vale dentro un solo
+# segmento di percorso, quindi non apre sottocartelle.
+#
+# La sorgente e `materiale/04_CATALOGO/TENSIONI/`, che non esce. Qui arrivano il
+# nome, le due posizioni con tesi, contesto e destinatario, e la regola operativa.
+# NON arrivano le `ancore`, perche riportano ai file delle fonti e il nome di un
+# file della fonte nasce dal titolo che quel file porta, cioe e testo del documento
+# travestito da percorso; e non arriva `deciso_da`, che e stato della lavorazione.
+# Sono le due stesse regole con cui il generatore dello strato istanza tiene fuori
+# `nasce_da` e i campi di lavorazione.
+#
+# Chi lo scrive e `scripts/scrivi_distribuibile.py`, mai un editor, e a rigenerarlo
+# e `scripts/genera_tensioni.py`.
+metodo/tensioni/*.md
+
+# --- Segnaposto delle cartelle ancora vuote ---
+# Escono perche la forma dell'albero e essa stessa una dichiarazione: chi riceve
+# il plugin vede dove andranno catalogo e metodo. Ogni riga sparisce da qui il
+# giorno in cui quella cartella riceve contenuto vero.
+# `metodo/profilo/.gitkeep` E SPARITO IL 2026-08-06 con il suo file, perche quella
+# cartella ha ricevuto contenuto vero: tenere il segnaposto accanto al contenuto
+# vorrebbe dire dichiarare vuota una cartella piena.
+# `catalog/*.yaml` E LA RUBRICA DISTRIBUIBILE, generata dal piano 10-02 con
+# `scripts/genera_catalogo.py`. La cartella era riservata dal piano 01-01 e
+# fino ad allora ha contenuto solo il proprio segnaposto. La riga e scritta
+# PRIMA dei file, che e l'ordine imparato nel 07-04: scrivere prima il file
+# rende il cancello rosso e insegna a considerarlo rumore.
+catalog/*.yaml
+
+# --- I file di metodo, piano 07-10, 2026-08-07 ---
+# Scritti PRIMA dei file, come le righe del glossario, del profilo e delle
+# tensioni. Fra questa riga e i file il build esce voce mancante, ed e l'atteso
+# intermedio e non lo zero: dice che manca un pezzo di prodotto, non che ne e
+# uscito uno non dichiarato. Con in gioco l'identita di terzi si preferisce
+# sempre il fallimento rumoroso.
+#
+# LA STELLA E LEGITTIMA QUI per la stessa ragione delle tensioni e non per quella
+# del glossario: sono insiemi che CRESCONO col catalogo, e ogni nodo nuovo porta
+# il suo file senza che nessuno tocchi queste righe. La stella vale dentro un solo
+# segmento di percorso, quindi non apre sottocartelle.
+#
+# `metodo/dottrina/.gitkeep` E `metodo/forme/.gitkeep` SONO SPARITI QUI SOTTO con
+# i loro file, perche quelle due cartelle hanno ricevuto contenuto vero: tenere il
+# segnaposto accanto al contenuto vorrebbe dire dichiarare vuota una cartella
+# piena. E la stessa regola gia applicata a `metodo/profilo/.gitkeep` il
+# 2026-08-06.
+#
+# La sorgente e il registro dei concetti, che non esce. Qui arrivano i `nome` dei
+# concetti normalizzati sul glossario e mascherati; non arrivano ne le tre chiavi
+# private ne i campi di lavorazione. Chi li scrive e
+# `scripts/scrivi_distribuibile.py`, mai un editor, e a rigenerarli e
+# `scripts/genera_metodo.py`.
+metodo/dottrina/*.md
+metodo/forme/*.md

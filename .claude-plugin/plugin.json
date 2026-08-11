@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "sales-manager-ai",
+  "description": "Direttore vendite dentro Claude: porta lo Scalers Sales System (dottrina di vendita, leadership e organizzazione) e le funzioni che da quel sapere producono script, procedure, referti, piani e bozze, con un limite dichiarato in partenza: il sistema produce artefatti e non li consegna, quindi cio che esce e sempre un file che poi un umano usa.",
+  "version": "1.0.1",
+  "author": {
+    "name": "Matteo Arnaboldi - Scalers"
+  },
+  "license": "UNLICENSED",
+  "keywords": [
+    "vendite",
+    "sales",
+    "closer",
+    "kpi",
+    "scalers"
+  ]
+}

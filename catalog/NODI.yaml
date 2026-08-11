@@ -1,0 +1,592 @@
+# Questo file e prodotto da `scripts/genera_catalogo.py` e non si corregge
+# a mano. La sorgente vive nel ramo che non si distribuisce: un errore si
+# corregge la' e si rigenera. Verso questo albero si scrive solo con
+# `scripts/scrivi_distribuibile.py`, e `--verifica` confronta byte per byte.
+N01_FONDAMENTALI_DELLA_VENDITA:
+  nome: I fondamentali della vendita
+  sommario: 'I principi che valgono in ogni fase della trattativa e che non dipendono dal prodotto: che
+    cosa e una vendita, che cosa la ferma e che cosa la muove.'
+  strato: dottrina
+  campi:
+  - principi_dichiarati
+  - dove_sono_scritti
+  - cadenza_di_ripasso
+  depends_on: []
+N02_PERCORSO_DAL_LEAD_AL_CLIENTE:
+  nome: Il percorso dal lead al cliente
+  sommario: Le fasi in sequenza dal primo contatto ai soldi in cassa, ognuna con il proprio nome, obiettivo
+    e tono, e i punti di controllo fra una e l'altra.
+  strato: dottrina
+  campi:
+  - stadi_del_percorso
+  - criterio_di_passaggio
+  - tempo_fra_gli_stadi
+  - responsabile_di_stadio
+  depends_on:
+  - N01_FONDAMENTALI_DELLA_VENDITA
+N03_PREPARAZIONE_DELLA_CHIAMATA:
+  nome: Prima della chiamata
+  sommario: Che cosa il venditore guarda e prepara prima di alzare la cornetta, e in che ordine.
+  strato: dottrina
+  campi:
+  - cosa_si_guarda_prima
+  - tempo_di_preparazione
+  - dove_stanno_i_dati
+  depends_on:
+  - N02_PERCORSO_DAL_LEAD_AL_CLIENTE
+N04_SCOPERTA:
+  nome: La scoperta
+  sommario: 'La fase in cui si indaga il problema della persona prima di proporle qualunque cosa: che
+    cosa si chiede, in che ordine e fin dove si scende.'
+  strato: dottrina
+  campi:
+  - domande_di_scoperta
+  - criterio_di_uscita
+  - durata_prevista
+  - profondita_minima
+  depends_on:
+  - N02_PERCORSO_DAL_LEAD_AL_CLIENTE
+N05_CHIUSURA:
+  nome: La chiusura
+  sommario: 'La chiamata in cui la decisione si stringe: che cosa non si rispiega, come si alza la certezza
+    e come si chiede la decisione.'
+  strato: dottrina
+  campi:
+  - struttura_della_closing
+  - modo_di_chiedere
+  - silenzio_dopo
+  - durata_prevista
+  depends_on:
+  - N43_IL_PITCH
+N06_OBIEZIONI_E_RESISTENZE:
+  nome: Le obiezioni e le resistenze
+  sommario: Che cosa c'e davvero dietro una resistenza, come si isola prima di rispondere e come si torna
+    a costruire certezza invece di ribattere.
+  strato: dottrina
+  campi:
+  - obiezioni_ricorrenti
+  - risposta_per_obiezione
+  - tecnica_di_isolamento
+  - soglia_di_rilancio
+  depends_on:
+  - N05_CHIUSURA
+N07_FOLLOW_UP_E_NURTURING:
+  nome: Il follow up e il nurturing
+  sommario: 'Che cosa si fa con chi non ha comprato: le categorie in cui si dividono, la cadenza con cui
+    si tornano a sentire e i messaggi che si mandano.'
+  strato: dottrina
+  campi:
+  - categorie_di_lead
+  - cadenza_per_categoria
+  - messaggi_pronti
+  - criterio_di_chiusura
+  depends_on:
+  - N05_CHIUSURA
+N08_COPIONE_DI_PRIMO_CONTATTO:
+  nome: Il copione del primo contatto
+  sommario: Le parole con cui questa azienda apre la prima chiamata, sia con chi non era mai stato contattato
+    sia con chi lo era gia.
+  strato: istanza
+  campi:
+  - testo_apertura_freddo
+  - testo_apertura_ricontatto
+  - durata_prevista
+  - dove_e_conservato
+  depends_on:
+  - N04_SCOPERTA
+  - N42_APERTURA_E_PRESA_DI_CONTROLLO
+N09_COPIONE_SU_CLIENTE_GIA_DENTRO:
+  nome: Il copione con chi e gia dentro il percorso
+  sommario: Le parole con cui questa azienda parla a chi ha gia comprato ed e dentro il percorso.
+  strato: istanza
+  campi:
+  - motivo_della_chiamata
+  - testo_del_copione
+  - esito_atteso
+  depends_on:
+  - N10_DOPO_IL_SI
+N10_DOPO_IL_SI:
+  nome: Dopo il si
+  sommario: Che cosa succede fra l'accordo e l'ingresso del cliente nel percorso, e chi fa che cosa.
+  strato: dottrina
+  campi:
+  - passaggi_dopo_accordo
+  - chi_fa_cosa
+  - tempo_massimo_ingresso
+  depends_on:
+  - N05_CHIUSURA
+N11_SFIDA_PROIEZIONE_E_COSTO_DELL_INAZIONE:
+  nome: La sfida, la proiezione e il costo dell'inazione
+  sommario: 'Le leve che fanno pesare il non decidere: la sfida al modo di fare corrente, la proiezione
+    nel futuro e il conto di che cosa costa restare fermi.'
+  strato: dottrina
+  campi:
+  - domande_di_proiezione
+  - costo_calcolato
+  - momento_della_sfida
+  depends_on:
+  - N04_SCOPERTA
+N12_REGOLE_NON_NEGOZIABILI:
+  nome: Le regole non negoziabili
+  sommario: Le regole che valgono comunque, il setup che deve essere in ordine prima della prima chiamata,
+    e la ragione per cui una regola si segue anche quando non se ne capisce ancora il motivo.
+  strato: dottrina
+  campi:
+  - elenco_regole
+  - conseguenza_per_regola
+  - setup_obbligatorio
+  - chi_le_aggiorna
+  depends_on:
+  - N30_IL_MANSIONARIO_COME_STRUMENTO
+N13_RAPPORTO_TONO_E_STORYTELLING:
+  nome: Il rapporto, il tono e il racconto
+  sommario: Come si costruisce il rapporto, che cosa fa il tono che le parole non fanno, e il racconto
+    come strumento di vendita invece che come riempitivo.
+  strato: dottrina
+  campi:
+  - storie_disponibili
+  - tono_per_fase
+  - regola_del_rapporto
+  depends_on:
+  - N01_FONDAMENTALI_DELLA_VENDITA
+N14_FONDAMENTA_DELLA_GESTIONE:
+  nome: Le fondamenta della gestione
+  sommario: Che cosa vuol dire gestire, i principi di base e i limiti materiali dentro cui una gestione
+    si muove.
+  strato: dottrina
+  campi:
+  - chi_gestisce
+  - cosa_decide
+  - limiti_dichiarati
+  depends_on: []
+N15_PROGETTO_CONTRO_PROCESSO:
+  nome: Progetto contro processo
+  sommario: La differenza fra cio che finisce e cio che si ripete, e perche confonderli fa gestire male
+    tutti e due.
+  strato: dottrina
+  campi:
+  - cose_che_si_ripetono
+  - cose_che_finiscono
+  - chi_le_distingue
+  depends_on:
+  - N14_FONDAMENTA_DELLA_GESTIONE
+N16_OBIETTIVO_PRIORITA_E_VALUTA:
+  nome: Obiettivo, priorita e valuta
+  sommario: Come si fissa l'obiettivo di un lavoro, come si decide che cosa viene prima, e qual e la moneta
+    con cui quel lavoro si paga.
+  strato: dottrina
+  campi:
+  - obiettivo_del_periodo
+  - criterio_di_priorita
+  - valuta_del_reparto
+  depends_on:
+  - N14_FONDAMENTA_DELLA_GESTIONE
+N17_I_TRE_RUOLI_DEL_REPARTO:
+  nome: I tre ruoli
+  sommario: La distinzione fra chi opera, chi coordina e chi dirige, che cosa cambia nel lavoro di ognuno
+    e che cosa succede quando uno fa il mestiere dell'altro.
+  strato: dottrina
+  campi:
+  - ruoli_dichiarati
+  - compiti_per_ruolo
+  - a_chi_risponde
+  - organico_attuale
+  depends_on:
+  - N14_FONDAMENTA_DELLA_GESTIONE
+N18_PILASTRI_E_PARAMETRI_DEL_GESTORE:
+  nome: I pilastri e i parametri di chi gestisce
+  sommario: Su che cosa si regge una gestione e con quali parametri si guarda chi gestisce.
+  strato: dottrina
+  campi:
+  - parametri_del_responsabile
+  - valore_atteso
+  - chi_lo_valuta
+  depends_on:
+  - N17_I_TRE_RUOLI_DEL_REPARTO
+N19_MUFFA_ORGANIZZATIVA_E_FEUDO:
+  nome: La muffa organizzativa e il feudo
+  sommario: Come si forma la zona di un'azienda che nessuno guarda piu, come si riconosce e che cosa la
+    fa crescere.
+  strato: dottrina
+  campi:
+  - zone_non_guardate
+  - chi_le_apre
+  - cadenza_di_controllo
+  depends_on:
+  - N17_I_TRE_RUOLI_DEL_REPARTO
+N20_METRICHE_DEL_VENDITORE:
+  nome: Le metriche del venditore
+  sommario: I numeri con cui un venditore si guarda, quali dipendono da lui e quali no, e che cosa si
+    cambia quando uno di quei numeri e basso.
+  strato: dottrina
+  campi:
+  - metriche_seguite
+  - valore_di_riferimento
+  - cadenza_di_lettura
+  - chi_le_guarda
+  depends_on:
+  - N02_PERCORSO_DAL_LEAD_AL_CLIENTE
+N21_MERCATO_E_QUADRO_ECONOMICO:
+  nome: Il quadro economico del mestiere
+  sommario: Che cosa questo mestiere paga davvero, come e fatto il settore intorno e che cosa questo cambia
+    in chi sceglie di farlo.
+  strato: dottrina
+  campi:
+  - compenso_dei_venditori
+  - quanto_guadagna_un_bravo
+  - durata_media_ruolo
+  depends_on: []
+N22_PSICOLOGIA_DEL_COMPRATORE:
+  nome: La psicologia di chi compra
+  sommario: Da dove arriva chi compra, che cosa ha gia visto prima di parlare con chi vende, e come questo
+    cambia cio che si dice.
+  strato: dottrina
+  campi:
+  - direzioni_riconosciute
+  - velocita_riconosciute
+  - come_si_riconosce
+  depends_on:
+  - N01_FONDAMENTALI_DELLA_VENDITA
+N23_CULTURA_DELL_ERRORE:
+  nome: La cultura dell'errore
+  sommario: Che cosa un reparto fa quando qualcuno sbaglia, e la differenza fra il reparto in cui l'errore
+    si dice e quello in cui si nasconde.
+  strato: dottrina
+  campi:
+  - cosa_si_fa_con_un_errore
+  - chi_lo_dichiara
+  - errori_riusati
+  depends_on:
+  - N14_FONDAMENTA_DELLA_GESTIONE
+N24_RIPRESA_CALIBRATA:
+  nome: La ripresa calibrata
+  sommario: 'Come si riprende una persona: quanto, quando, davanti a chi, e che cosa distingue una ripresa
+    che corregge da una che rompe.'
+  strato: dottrina
+  campi:
+  - dove_si_riprende
+  - entro_quanto
+  - come_si_chiude
+  depends_on:
+  - N23_CULTURA_DELL_ERRORE
+N25_VALORE_DEL_TEMPO:
+  nome: Il valore del tempo
+  sommario: Come si guarda il tempo di un reparto e delle persone che ci lavorano, e che cosa lo consuma
+    senza che nessuno se ne accorga.
+  strato: dottrina
+  campi:
+  - ore_di_vendita_a_settimana
+  - cosa_consuma_il_tempo
+  - regola_di_protezione
+  depends_on:
+  - N16_OBIETTIVO_PRIORITA_E_VALUTA
+N26_LEGGE_DEL_COPERCHIO:
+  nome: La legge del coperchio
+  sommario: Il principio per cui il livello di chi guida mette un tetto al livello di cio che guida.
+  strato: dottrina
+  campi:
+  - tetto_riconosciuto
+  - cosa_lo_alza
+  - investimento_in_formazione
+  depends_on: []
+N27_INFLUENZA_E_PROCESSO:
+  nome: L'influenza e il processo
+  sommario: Che cosa e davvero l'influenza di chi guida, e perche la leadership e un processo che si costruisce
+    invece di una qualita che si ha.
+  strato: dottrina
+  campi:
+  - chi_ha_influenza
+  - come_l_ha_costruita
+  - percorso_di_crescita
+  depends_on:
+  - N26_LEGGE_DEL_COPERCHIO
+N28_VALORI_E_TRASPARENZA:
+  nome: I valori e la trasparenza
+  sommario: I valori dichiarati di un'azienda, che cosa vuol dire tenerli davvero, e la trasparenza come
+    scelta di governo invece che come stile.
+  strato: dottrina
+  campi:
+  - valori_dichiarati
+  - comportamento_per_valore
+  - cosa_si_dice_a_tutti
+  depends_on:
+  - N27_INFLUENZA_E_PROCESSO
+N29_LEGGE_DELLA_NAVIGAZIONE:
+  nome: La legge della navigazione
+  sommario: Chi guida traccia la rotta prima di partire, e la differenza fra chi prepara il percorso e
+    chi lo scopre strada facendo.
+  strato: dottrina
+  campi:
+  - orizzonte_di_piano
+  - cadenza_di_revisione
+  - chi_traccia_la_rotta
+  depends_on:
+  - N27_INFLUENZA_E_PROCESSO
+N30_IL_MANSIONARIO_COME_STRUMENTO:
+  nome: Il mansionario come strumento
+  sommario: Perche un reparto tiene un mansionario, in quali momenti si apre, chi lo aggiorna e che cosa
+    vuol dire che le sue procedure non sono suggerimenti.
+  strato: dottrina
+  campi:
+  - dove_vive_il_mansionario
+  - quando_si_apre
+  - chi_lo_aggiorna
+  - cadenza_di_rilettura
+  depends_on: []
+N31_OFFERTA_E_PROVE_DELL_AZIENDA:
+  nome: L'offerta e le prove
+  sommario: Che cosa vende questa azienda, a che prezzo, con quali prove e con quali credenziali.
+  strato: istanza
+  campi:
+  - cosa_vendi
+  - prezzo_e_modalita
+  - prove_disponibili
+  - credenziali
+  depends_on:
+  - N41_LE_TRE_LEVE_DELLA_VENDITA
+N32_CLIENTE_IDEALE_DELL_AZIENDA:
+  nome: Il cliente ideale
+  sommario: Chi e il lead di questa azienda, da dove arriva, che cosa gli manca e quali leve lo muovono.
+  strato: istanza
+  campi:
+  - chi_e_il_lead
+  - da_dove_arriva
+  - cosa_gli_manca
+  - chi_non_e_cliente
+  depends_on:
+  - N22_PSICOLOGIA_DEL_COMPRATORE
+N33_STRUMENTI_E_RECAPITI_DELL_AZIENDA:
+  nome: Gli strumenti e i recapiti
+  sommario: Dove stanno i documenti, gli indirizzi e gli strumenti che il venditore apre ogni giorno,
+    e i messaggi pronti che tiene a portata di mano.
+  strato: istanza
+  campi:
+  - strumenti_in_uso
+  - dove_stanno_i_documenti
+  - recapiti_di_servizio
+  depends_on:
+  - N07_FOLLOW_UP_E_NURTURING
+  - N12_REGOLE_NON_NEGOZIABILI
+N34_MATERIALE_SORGENTE_DEL_CORPUS:
+  nome: Il materiale sorgente
+  sommario: Da quali documenti nasce questo corpus, come sono fatti dentro e da dove arrivano.
+  strato: istanza
+  campi:
+  - documenti_di_origine
+  - chi_li_ha_prodotti
+  - dove_sono_conservati
+  depends_on: []
+N35_I_CINQUE_LIVELLI_DELLA_LEADERSHIP:
+  nome: I cinque livelli della leadership
+  sommario: I cinque livelli a cui una persona viene seguita, dalla posizione al rispetto, e la maschera
+    del comando che si porta su ognuno.
+  strato: dottrina
+  campi:
+  - livello_dichiarato
+  - segnale_del_livello
+  - cosa_manca_per_salire
+  depends_on:
+  - N27_INFLUENZA_E_PROCESSO
+N36_IMPERATIVO_DEL_COMANDO:
+  nome: L'imperativo del comando
+  sommario: Perche in un gruppo qualcuno deve decidere, e che cosa succede quando nessuno lo fa.
+  strato: dottrina
+  campi:
+  - chi_decide_in_stallo
+  - tempo_massimo_di_stallo
+  - cosa_succede_dopo
+  depends_on: []
+N37_IL_CASO_STUDIO_STORICO:
+  nome: Il caso studio storico
+  sommario: La battaglia antica usata come caso di studio di comando, con il parallelo fra il campo e
+    il reparto.
+  strato: dottrina
+  campi:
+  - caso_di_riferimento
+  - parallelo_col_reparto
+  - quando_si_usa
+  depends_on: []
+N38_CRESCERE_CONTRO_EVOLVERE:
+  nome: Crescere contro evolvere
+  sommario: La distinzione fra diventare piu grandi e diventare altro, e che cosa chiede l'una e che cosa
+    chiede l'altra.
+  strato: dottrina
+  campi:
+  - obiettivo_di_crescita
+  - cosa_deve_cambiare
+  - vincolo_attuale
+  depends_on:
+  - N36_IMPERATIVO_DEL_COMANDO
+N39_FORMULE_E_PRINCIPI_CARDINE:
+  nome: Le formule e i principi cardine
+  sommario: I principi cardine con cui chi guida decide, in forma di formule da applicare invece che di
+    massime da ricordare.
+  strato: dottrina
+  campi:
+  - principi_di_decisione
+  - esempio_di_applicazione
+  - chi_li_puo_invocare
+  depends_on:
+  - N36_IMPERATIVO_DEL_COMANDO
+N41_LE_TRE_LEVE_DELLA_VENDITA:
+  nome: Le tre leve
+  sommario: Le tre leve che attraversano ogni interazione, con il gap fra prezzo chiesto e valore percepito
+    come cosa che ferma davvero un acquisto.
+  strato: dottrina
+  campi:
+  - leve_dichiarate
+  - peso_per_leva
+  - dove_si_lavora_oggi
+  depends_on:
+  - N01_FONDAMENTALI_DELLA_VENDITA
+N42_APERTURA_E_PRESA_DI_CONTROLLO:
+  nome: L'apertura e la presa di controllo
+  sommario: L'ingresso nella chiamata, il rapporto iniziale, le regole della conversazione dichiarate
+    all'inizio e il momento in cui chi vende prende il controllo dell'ordine dei fatti.
+  strato: dottrina
+  campi:
+  - regole_della_conversazione
+  - momento_della_presa
+  - segnali_di_perdita
+  depends_on:
+  - N02_PERCORSO_DAL_LEAD_AL_CLIENTE
+N43_IL_PITCH:
+  nome: Il pitch e la differenza fra vendere e chiudere
+  sommario: La presentazione della soluzione, che si regge sulle informazioni prese prima, e la distinzione
+    fra far nascere la voglia di comprare e stringere l'accordo.
+  strato: dottrina
+  campi:
+  - struttura_del_pitch
+  - cosa_si_personalizza
+  - durata_prevista
+  depends_on:
+  - N04_SCOPERTA
+N44_L_ARTE_DELLA_DOMANDA:
+  nome: L'arte della domanda
+  sommario: La differenza fra chi parla e chi chiede, i tre obiettivi di una domanda e il modo in cui
+    la qualita della domanda decide la qualita della risposta.
+  strato: dottrina
+  campi:
+  - tipi_di_domanda
+  - esempi_per_tipo
+  - errore_piu_frequente
+  depends_on:
+  - N04_SCOPERTA
+N45_LE_TRE_CERTEZZE_APPLICATE:
+  nome: Le Tre Certezze
+  sommario: I tre pilastri su cui la persona deve essere certa prima di comprare, ognuno come livello
+    su una scala invece che come si o no, e il lavoro di alzare quello che manca. Il modello e di Jordan
+    Belfort.
+  strato: dottrina
+  campi:
+  - certezze_dichiarate
+  - segnale_per_certezza
+  - leva_per_certezza
+  depends_on:
+  - N01_FONDAMENTALI_DELLA_VENDITA
+N46_RESPONSABILITA_DI_CHI_VENDE:
+  nome: La responsabilita di chi vende
+  sommario: La differenza fra colpa e responsabilita, e il principio per cui dal momento in cui un lead
+    lascia i propri dati l'esito e di chi vende.
+  strato: dottrina
+  campi:
+  - dove_finisce_la_responsabilita
+  - cosa_non_e_scusa
+  - come_si_riprende
+  depends_on:
+  - N01_FONDAMENTALI_DELLA_VENDITA
+N47_I_CASI_STORICI_DELLA_MENTALITA:
+  nome: I casi storici
+  sommario: La rassegna di battaglie e la monografia su un comandante, usate come casi di studio di decisione
+    sotto pressione.
+  strato: dottrina
+  campi:
+  - casi_usati_in_aula
+  - lezione_per_caso
+  - dove_si_raccontano
+  depends_on:
+  - N49_OBIETTIVO_MENTALITA_ED_EQUILIBRIO
+N48_CHE_COSA_E_LA_MENTALITA:
+  nome: Che cosa e la mentalita
+  sommario: Le false credenze da smontare prima di parlarne, da dove viene la confusione sulla parola,
+    e che cosa resta quando si tolgono.
+  strato: dottrina
+  campi:
+  - definizione_in_uso
+  - come_si_misura
+  - chi_ne_parla
+  depends_on: []
+N49_OBIETTIVO_MENTALITA_ED_EQUILIBRIO:
+  nome: Obiettivo, mentalita ed equilibrio
+  sommario: 'I tre punti su cui la mentalita si sviluppa: dove si va, la testa con cui ci si va, e cio
+    che tiene in piedi la persona mentre ci va.'
+  strato: dottrina
+  campi:
+  - obiettivo_personale
+  - cadenza_del_confronto
+  - segnali_di_cedimento
+  depends_on:
+  - N48_CHE_COSA_E_LA_MENTALITA
+N50_I_GRADINI_DEL_PERCORSO:
+  nome: I gradini del percorso
+  sommario: 'Il percorso a gradini contro l''idea della linea retta immediata, e la domanda con cui si
+    comincia: qual e l''obiettivo e in quanto tempo.'
+  strato: dottrina
+  campi:
+  - gradini_dichiarati
+  - criterio_per_salire
+  - tempo_medio_per_gradino
+  depends_on:
+  - N49_OBIETTIVO_MENTALITA_ED_EQUILIBRIO
+N51_PONTI_FRA_MENTALITA_E_VENDITA:
+  nome: I ponti fra la mentalita e la vendita
+  sommario: 'I punti in cui il modulo di mentalita tocca direttamente il lavoro di chi vende: il filtro
+    con cui legge un''obiezione, le convinzioni da stanare e la valuta applicata alle priorita in trattativa.'
+  strato: dottrina
+  campi:
+  - convinzioni_da_stanare
+  - dove_si_vedono
+  - chi_le_lavora
+  depends_on:
+  - N49_OBIETTIVO_MENTALITA_ED_EQUILIBRIO
+N52_DIZIONARIO_DEI_DATI_E_DEGLI_STADI:
+  nome: Dizionario dei dati e degli stadi di pipeline
+  sommario: 'I nomi che il reparto da alle cose che conta: in quali stadi vive un lead, che cosa fa scattare
+    il passaggio da uno all''altro, e come si chiama e come si calcola ogni numero che finisce in un referto.'
+  strato: istanza
+  campi:
+  - stadi_della_pipeline
+  - regola_di_passaggio
+  - definizione_di_qualificato
+  - metriche_in_uso
+  - soglie_dichiarate
+  - dove_vivono_i_numeri
+  depends_on:
+  - N20_METRICHE_DEL_VENDITORE
+  - N02_PERCORSO_DAL_LEAD_AL_CLIENTE
+N53_CADENZA_OPERATIVA_DEL_REPARTO:
+  nome: Cadenza operativa del reparto
+  sommario: Il calendario con cui il reparto si vede, che cosa si guarda in ogni appuntamento e chi porta
+    quale numero. E la superficie su cui un referto viene letto invece che soltanto prodotto.
+  strato: istanza
+  campi:
+  - appuntamenti_ricorrenti
+  - ordine_del_giorno
+  - chi_porta_quale_numero
+  - che_cosa_fa_saltare_un_appuntamento
+  depends_on:
+  - N25_VALORE_DEL_TEMPO
+  - N17_I_TRE_RUOLI_DEL_REPARTO
+N54_SELEZIONE_E_CANDIDATI:
+  nome: Selezione e candidati
+  sommario: 'Come questa azienda cerca e sceglie chi vende: da dove arrivano i candidati, che cosa si
+    guarda di loro, e quanti ne servono prima che un andamento ricorrente sia un andamento e non un caso.'
+  strato: istanza
+  campi:
+  - da_dove_arrivano_i_candidati
+  - comportamenti_osservati
+  - soglia_minima_candidati
+  - chi_decide_l_assunzione
+  depends_on:
+  - N21_MERCATO_E_QUADRO_ECONOMICO
+  - N50_I_GRADINI_DEL_PERCORSO

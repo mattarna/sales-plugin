@@ -1,0 +1,655 @@
+# Questo file e prodotto da `scripts/genera_catalogo.py` e non si corregge
+# a mano. La sorgente vive nel ramo che non si distribuisce: un errore si
+# corregge la' e si rigenera. Verso questo albero si scrive solo con
+# `scripts/scrivi_distribuibile.py`, e `--verifica` confronta byte per byte.
+N01_FONDAMENTALI_DELLA_VENDITA:
+  absent_when:
+  - il campo principi_dichiarati non esiste, cioe il reparto non ha nessun principio di vendita messo
+    per iscritto
+  partial_when:
+  - il campo principi_dichiarati raccoglie meno di 3 principi
+  - il campo dove_sono_scritti non nomina nessun documento che un venditore possa aprire
+  - il campo cadenza_di_ripasso non porta nessun numero di giorni
+  complete_when:
+  - il campo principi_dichiarati raccoglie almeno 5 principi, ognuno con la situazione in cui si applica
+  - il campo dove_sono_scritti nomina il documento e il punto in cui stanno
+  - il campo cadenza_di_ripasso porta un numero di giorni fra un ripasso e il successivo
+N02_PERCORSO_DAL_LEAD_AL_CLIENTE:
+  absent_when:
+  - il campo stadi_del_percorso non esiste, cioe il percorso dal primo contatto ai soldi in cassa non
+    e scritto da nessuna parte
+  partial_when:
+  - il campo stadi_del_percorso dichiara meno di 3 stadi
+  - il campo criterio_di_passaggio non e scritto per ogni stadio dichiarato
+  - il campo responsabile_di_stadio lascia almeno 1 stadio senza un nome
+  complete_when:
+  - il campo stadi_del_percorso dichiara almeno 4 stadi in sequenza
+  - il campo criterio_di_passaggio dice per ogni stadio che cosa deve essere vero perche il lead passi
+    al successivo
+  - il campo tempo_fra_gli_stadi porta un numero di ore o di giorni per ogni passaggio
+  - il campo responsabile_di_stadio nomina chi possiede ogni stadio
+N03_PREPARAZIONE_DELLA_CHIAMATA:
+  absent_when:
+  - il campo cosa_si_guarda_prima non esiste, cioe i venditori chiamano senza guardare niente
+  partial_when:
+  - il campo cosa_si_guarda_prima elenca meno di 3 cose
+  - il campo dove_stanno_i_dati non nomina lo strumento da cui si aprono
+  - il campo tempo_di_preparazione non porta nessun numero di minuti
+  complete_when:
+  - il campo cosa_si_guarda_prima elenca almeno 4 cose in ordine
+  - il campo dove_stanno_i_dati nomina lo strumento e il punto
+  - il campo tempo_di_preparazione porta un numero di minuti
+N04_SCOPERTA:
+  absent_when:
+  - il campo domande_di_scoperta non esiste, cioe chi vende entra in chiamata senza nessuna domanda decisa
+    prima
+  partial_when:
+  - il campo domande_di_scoperta esiste ma raccoglie meno di 5 domande
+  - il campo criterio_di_uscita non dice a quali informazioni si deve essere arrivati per passare alla
+    fase dopo
+  - il campo profondita_minima non dichiara quanti passaggi di scavo si fanno su un problema prima di
+    fermarsi
+  complete_when:
+  - il campo domande_di_scoperta raccoglie almeno 8 domande, ognuna con la risposta che deve produrre
+  - il campo criterio_di_uscita nomina almeno 3 informazioni che devono essere in mano prima di uscire
+    dalla fase
+  - il campo profondita_minima dichiara almeno 3 passaggi di scavo
+  - il campo durata_prevista porta un numero di minuti
+N05_CHIUSURA:
+  absent_when:
+  - il campo struttura_della_closing non esiste, cioe la chiamata di chiusura va come viene
+  partial_when:
+  - il campo struttura_della_closing dichiara meno di 3 passaggi
+  - il campo modo_di_chiedere non porta le parole con cui si chiede la decisione
+  - il campo silenzio_dopo non dichiara che cosa si fa dopo aver chiesto
+  complete_when:
+  - il campo struttura_della_closing dichiara almeno 4 passaggi in sequenza
+  - il campo modo_di_chiedere porta le parole esatte
+  - il campo silenzio_dopo dichiara di aspettare e per quanti secondi
+  - il campo durata_prevista porta un numero di minuti
+N06_OBIEZIONI_E_RESISTENZE:
+  absent_when:
+  - il campo obiezioni_ricorrenti non esiste, cioe nessuno ha mai messo per iscritto che cosa i lead rispondono
+    di no
+  partial_when:
+  - il campo obiezioni_ricorrenti elenca meno di 4 obiezioni
+  - il campo risposta_per_obiezione lascia almeno 1 obiezione senza una via di lavoro
+  - il campo tecnica_di_isolamento non dice come si separa l'obiezione vera da quella di superficie
+  complete_when:
+  - il campo obiezioni_ricorrenti elenca almeno 6 obiezioni, ognuna con la frequenza con cui compare
+  - il campo risposta_per_obiezione porta per ognuna la certezza che manca e il modo di alzarla
+  - il campo tecnica_di_isolamento dichiara come si isola prima di rispondere
+  - il campo soglia_di_rilancio dichiara dopo quanti tentativi si smette
+N07_FOLLOW_UP_E_NURTURING:
+  absent_when:
+  - il campo categorie_di_lead non esiste, cioe chi non ha comprato finisce tutto in un mucchio solo
+  partial_when:
+  - il campo categorie_di_lead distingue meno di 3 categorie
+  - il campo cadenza_per_categoria lascia almeno 1 categoria senza un numero di giorni
+  - il campo criterio_di_chiusura non dice quando si smette di richiamare
+  complete_when:
+  - il campo categorie_di_lead distingue almeno 4 categorie con il motivo per cui non hanno comprato
+  - il campo cadenza_per_categoria porta per ognuna un numero di giorni
+  - il campo messaggi_pronti porta almeno 1 testo per categoria
+  - il campo criterio_di_chiusura dice dopo quanti giorni o quanti tentativi un lead esce dal giro
+N08_COPIONE_DI_PRIMO_CONTATTO:
+  absent_when:
+  - il campo testo_apertura_freddo non esiste, cioe ogni venditore apre la prima chiamata con parole sue
+  partial_when:
+  - il campo testo_apertura_freddo esiste e il campo testo_apertura_ricontatto no, quindi 1 dei 2 casi
+    non e coperto
+  - il campo dove_e_conservato non nomina un posto che il venditore apre durante la chiamata
+  complete_when:
+  - il campo testo_apertura_freddo porta le parole per chi non e mai stato contattato
+  - il campo testo_apertura_ricontatto porta le parole per chi lo era gia
+  - il campo dove_e_conservato nomina il posto da cui si apre in 1 gesto
+  - il campo durata_prevista porta un numero di minuti
+N09_COPIONE_SU_CLIENTE_GIA_DENTRO:
+  absent_when:
+  - il campo motivo_della_chiamata non esiste, cioe non e dichiarato perche si richiama chi ha gia comprato
+  partial_when:
+  - il campo motivo_della_chiamata elenca meno di 2 motivi
+  - il campo testo_del_copione non porta le parole per almeno 1 dei motivi
+  - il campo esito_atteso non dice che cosa deve succedere dopo
+  complete_when:
+  - il campo motivo_della_chiamata elenca almeno 2 motivi distinti
+  - il campo testo_del_copione porta le parole per ogni motivo
+  - il campo esito_atteso dice per ognuno che cosa deve essere vero a chiamata finita
+N10_DOPO_IL_SI:
+  absent_when:
+  - il campo passaggi_dopo_accordo non esiste, cioe dopo il si non e scritto che cosa succede
+  partial_when:
+  - il campo passaggi_dopo_accordo elenca meno di 3 passaggi
+  - il campo chi_fa_cosa lascia almeno 1 passaggio senza un nome
+  - il campo tempo_massimo_ingresso non porta nessun numero di ore
+  complete_when:
+  - il campo passaggi_dopo_accordo elenca almeno 4 passaggi in ordine
+  - il campo chi_fa_cosa nomina il responsabile di ogni passaggio
+  - il campo tempo_massimo_ingresso porta un numero di ore entro cui il cliente e dentro
+N11_SFIDA_PROIEZIONE_E_COSTO_DELL_INAZIONE:
+  absent_when:
+  - il campo domande_di_proiezione non esiste, cioe nessuno fa mai immaginare al lead che cosa succede
+    se non decide
+  partial_when:
+  - il campo domande_di_proiezione raccoglie meno di 3 domande
+  - il campo costo_calcolato non porta nessuna cifra o nessun periodo di tempo
+  - il campo momento_della_sfida non dice dopo quale fase si sfida
+  complete_when:
+  - il campo domande_di_proiezione raccoglie almeno 4 domande in sequenza
+  - il campo costo_calcolato porta una cifra o un numero di mesi che il lead perde restando fermo
+  - il campo momento_della_sfida nomina la fase dopo la quale si sfida
+N12_REGOLE_NON_NEGOZIABILI:
+  absent_when:
+  - il campo elenco_regole non esiste, cioe non c'e nessuna regola dichiarata non negoziabile
+  partial_when:
+  - il campo elenco_regole raccoglie meno di 5 regole
+  - il campo conseguenza_per_regola lascia almeno 1 regola senza una conseguenza scritta
+  - il campo setup_obbligatorio non dichiara che cosa deve essere in ordine prima della prima chiamata
+  complete_when:
+  - il campo elenco_regole raccoglie almeno 8 regole, ognuna con il motivo per cui esiste
+  - il campo conseguenza_per_regola dice per ognuna che cosa succede a chi non la segue
+  - il campo setup_obbligatorio elenca almeno 4 cose in ordine prima della prima chiamata
+  - il campo chi_le_aggiorna nomina 1 persona
+N13_RAPPORTO_TONO_E_STORYTELLING:
+  absent_when:
+  - il campo storie_disponibili non esiste, cioe i venditori raccontano quello che viene in mente
+  partial_when:
+  - il campo storie_disponibili raccoglie meno di 3 storie
+  - il campo tono_per_fase non dichiara il tono per almeno 3 fasi
+  - il campo regola_del_rapporto non dice quando si smette di costruire rapporto e si entra nel lavoro
+  complete_when:
+  - il campo storie_disponibili raccoglie almeno 5 storie, ognuna con la situazione in cui si usa
+  - il campo tono_per_fase dichiara il tono per ogni fase della chiamata
+  - il campo regola_del_rapporto dice a quale minuto o dopo quale segnale si passa al lavoro
+N14_FONDAMENTA_DELLA_GESTIONE:
+  absent_when:
+  - il campo chi_gestisce non esiste, cioe nessuno ha in mano il reparto in modo dichiarato
+  partial_when:
+  - il campo cosa_decide non elenca almeno 3 decisioni che sono di chi gestisce e di nessun altro
+  - il campo limiti_dichiarati non nomina nessun limite di budget, di tempo o di persone
+  complete_when:
+  - il campo chi_gestisce nomina 1 persona per il reparto
+  - il campo cosa_decide elenca almeno 4 decisioni che sono sue
+  - il campo limiti_dichiarati porta almeno 1 numero, di budget o di persone o di giorni
+N15_PROGETTO_CONTRO_PROCESSO:
+  absent_when:
+  - il campo cose_che_si_ripetono non esiste, cioe nel reparto non si distingue cio che torna ogni settimana
+    da cio che finisce
+  partial_when:
+  - il campo cose_che_si_ripetono elenca meno di 3 attivita
+  - il campo cose_che_finiscono non porta per almeno 1 lavoro una data di fine
+  - il campo chi_le_distingue non nomina nessuno
+  complete_when:
+  - il campo cose_che_si_ripetono elenca almeno 4 attivita con la loro cadenza
+  - il campo cose_che_finiscono porta per ogni lavoro una data di fine
+  - il campo chi_le_distingue nomina chi decide in quale delle 2 categorie sta una cosa nuova
+N16_OBIETTIVO_PRIORITA_E_VALUTA:
+  absent_when:
+  - il campo obiettivo_del_periodo non esiste, cioe il reparto non ha un traguardo dichiarato per il periodo
+    in corso
+  partial_when:
+  - il campo obiettivo_del_periodo non porta nessuna cifra o nessun periodo
+  - il campo criterio_di_priorita non dice come si sceglie fra due lavori che chiedono la stessa ora
+  - il campo valuta_del_reparto non nomina nessuna fra le 3 risorse, cioe tempo, soldi e persone
+  complete_when:
+  - il campo obiettivo_del_periodo porta la cifra e il numero di settimane
+  - il campo criterio_di_priorita dice come si sceglie fra due lavori che chiedono la stessa ora
+  - il campo valuta_del_reparto nomina 1 sola fra tempo, soldi e persone, e dice da quale numero lo si
+    vede
+N17_I_TRE_RUOLI_DEL_REPARTO:
+  absent_when:
+  - il campo ruoli_dichiarati non esiste, cioe nel reparto nessuno sa dire chi opera, chi coordina e chi
+    dirige
+  partial_when:
+  - il campo ruoli_dichiarati nomina meno di 2 ruoli distinti
+  - il campo compiti_per_ruolo lascia almeno 1 ruolo senza i suoi compiti
+  - il campo a_chi_risponde non dice per ogni ruolo a chi rende conto
+  complete_when:
+  - il campo ruoli_dichiarati nomina almeno 3 ruoli distinti
+  - il campo compiti_per_ruolo porta per ognuno almeno 3 compiti che sono suoi e di nessun altro
+  - il campo a_chi_risponde disegna una catena senza salti
+  - il campo organico_attuale porta il numero di persone per ogni ruolo
+N18_PILASTRI_E_PARAMETRI_DEL_GESTORE:
+  absent_when:
+  - il campo parametri_del_responsabile non esiste, cioe chi dirige il reparto non e misurato su niente
+  partial_when:
+  - il campo parametri_del_responsabile elenca meno di 2 parametri
+  - il campo valore_atteso lascia almeno 1 parametro senza un numero
+  - il campo chi_lo_valuta non nomina nessuno
+  complete_when:
+  - il campo parametri_del_responsabile elenca almeno 3 parametri su cui chi dirige e misurato
+  - il campo valore_atteso porta per ognuno un numero e il periodo
+  - il campo chi_lo_valuta nomina chi lo guarda e ogni quanti giorni
+N19_MUFFA_ORGANIZZATIVA_E_FEUDO:
+  absent_when:
+  - il campo zone_non_guardate non esiste, cioe nessuno si e mai chiesto quale parte del reparto non viene
+    guardata da mesi
+  partial_when:
+  - il campo zone_non_guardate non nomina almeno 1 zona
+  - il campo chi_le_apre non nomina nessuno
+  - il campo cadenza_di_controllo non porta nessun numero di giorni
+  complete_when:
+  - il campo zone_non_guardate nomina le parti del reparto che nessuno apre da piu di 90 giorni
+  - il campo chi_le_apre nomina chi ha il compito di guardarci dentro
+  - il campo cadenza_di_controllo porta un numero di giorni fra un controllo e il successivo
+N20_METRICHE_DEL_VENDITORE:
+  absent_when:
+  - il campo metriche_seguite non esiste, cioe nessun venditore segue nessun numero
+  partial_when:
+  - il campo metriche_seguite elenca meno di 3 metriche
+  - il campo valore_di_riferimento lascia almeno 1 metrica senza una fascia considerata nella media
+  - il campo cadenza_di_lettura non porta nessun numero di giorni
+  complete_when:
+  - il campo metriche_seguite elenca almeno 5 metriche su cui il venditore ha il controllo
+  - il campo valore_di_riferimento porta per ognuna la fascia media e il valore sotto cui si interviene
+  - il campo cadenza_di_lettura porta un numero di giorni
+  - il campo chi_le_guarda nomina sia il venditore sia chi lo dirige
+N21_MERCATO_E_QUADRO_ECONOMICO:
+  absent_when:
+  - il campo compenso_dei_venditori non esiste, cioe non e scritto come sono pagati i venditori
+  partial_when:
+  - il campo compenso_dei_venditori non distingue la parte fissa da quella variabile
+  - il campo quanto_guadagna_un_bravo non porta nessuna cifra
+  - il campo durata_media_ruolo non porta nessun numero di mesi
+  complete_when:
+  - il campo compenso_dei_venditori dichiara la parte fissa, quella variabile e su quale numero si calcola
+  - il campo quanto_guadagna_un_bravo porta la cifra mensile di chi va bene
+  - il campo durata_media_ruolo porta il numero di mesi che un venditore resta in media
+N22_PSICOLOGIA_DEL_COMPRATORE:
+  absent_when:
+  - il campo direzioni_riconosciute non esiste, cioe tutti i lead vengono trattati allo stesso modo
+  partial_when:
+  - il campo direzioni_riconosciute distingue meno di 2 direzioni
+  - il campo velocita_riconosciute non distingue chi decide in fretta da chi no
+  - il campo come_si_riconosce non dice da che cosa si capisce
+  complete_when:
+  - il campo direzioni_riconosciute distingue chi scappa da qualcosa e chi va verso qualcosa
+  - il campo velocita_riconosciute distingue almeno 2 velocita di decisione
+  - il campo come_si_riconosce porta almeno 1 domanda o 1 segnale per riconoscere ogni combinazione
+N23_CULTURA_DELL_ERRORE:
+  absent_when:
+  - il campo cosa_si_fa_con_un_errore non esiste, cioe quando qualcuno sbaglia non e dichiarato che cosa
+    succede
+  partial_when:
+  - il campo cosa_si_fa_con_un_errore non distingue 1 errore di processo da 1 errore di persona
+  - il campo chi_lo_dichiara non dice se lo dichiara chi lo ha fatto
+  - il campo errori_riusati non nomina nessun errore diventato una regola
+  complete_when:
+  - il campo cosa_si_fa_con_un_errore distingue l'errore di processo da quello di persona e dice che cosa
+    cambia
+  - il campo chi_lo_dichiara dichiara che lo porta chi lo ha fatto, entro un numero di ore
+  - il campo errori_riusati nomina almeno 2 errori diventati una regola scritta
+N24_RIPRESA_CALIBRATA:
+  absent_when:
+  - il campo dove_si_riprende non esiste, cioe non e dichiarato se una ripresa si fa davanti agli altri
+    o da soli
+  partial_when:
+  - il campo dove_si_riprende non dichiara che si fa da solo a solo
+  - il campo entro_quanto non porta nessun numero di ore o di giorni
+  - il campo come_si_chiude non dice come si verifica che sia servita
+  complete_when:
+  - il campo dove_si_riprende dichiara che si fa da solo a solo
+  - il campo entro_quanto porta il numero di ore entro cui si riprende dopo il fatto
+  - il campo come_si_chiude dice entro quanti giorni si torna a verificare
+N25_VALORE_DEL_TEMPO:
+  absent_when:
+  - il campo ore_di_vendita_a_settimana non esiste, cioe nessuno sa quante ore i venditori passano davvero
+    a vendere
+  partial_when:
+  - il campo ore_di_vendita_a_settimana non porta nessun numero di ore
+  - il campo cosa_consuma_il_tempo elenca meno di 2 attivita che tolgono ore alla vendita
+  - il campo regola_di_protezione non dichiara nessuna fascia protetta
+  complete_when:
+  - il campo ore_di_vendita_a_settimana porta il numero di ore per venditore
+  - il campo cosa_consuma_il_tempo elenca almeno 3 attivita con le ore che portano via
+  - il campo regola_di_protezione dichiara una fascia oraria in cui non si fanno riunioni
+N26_LEGGE_DEL_COPERCHIO:
+  absent_when:
+  - il campo tetto_riconosciuto non esiste, cioe nessuno ha mai detto che il reparto non puo superare
+    il livello di chi lo guida
+  partial_when:
+  - il campo tetto_riconosciuto non nomina nessuna persona o nessun ruolo
+  - il campo cosa_lo_alza non elenca almeno 2 cose
+  - il campo investimento_in_formazione non porta nessun numero di ore o di euro
+  complete_when:
+  - il campo tetto_riconosciuto nomina la persona il cui livello fa da tetto
+  - il campo cosa_lo_alza elenca almeno 3 cose che alzerebbero quel livello
+  - il campo investimento_in_formazione porta le ore o gli euro all'anno spesi su chi guida
+N27_INFLUENZA_E_PROCESSO:
+  absent_when:
+  - il campo chi_ha_influenza non esiste, cioe nessuno sa dire chi nel reparto viene ascoltato davvero
+  partial_when:
+  - il campo chi_ha_influenza nomina meno di 2 persone
+  - il campo come_l_ha_costruita non dice per almeno 1 di loro da che cosa viene
+  - il campo percorso_di_crescita non porta nessun numero di mesi
+  complete_when:
+  - il campo chi_ha_influenza nomina le persone ascoltate anche fuori dal proprio ruolo
+  - il campo come_l_ha_costruita dice per ognuna da quale lavoro viene
+  - il campo percorso_di_crescita porta il numero di mesi e i passaggi per portare qualcuno a guidare
+N28_VALORI_E_TRASPARENZA:
+  absent_when:
+  - il campo valori_dichiarati non esiste, cioe l'azienda non ha valori messi per iscritto
+  partial_when:
+  - il campo valori_dichiarati elenca meno di 3 valori
+  - il campo comportamento_per_valore lascia almeno 1 valore senza un comportamento osservabile
+  - il campo cosa_si_dice_a_tutti non dichiara quali numeri il reparto vede
+  complete_when:
+  - il campo valori_dichiarati elenca almeno 3 valori
+  - il campo comportamento_per_valore porta per ognuno almeno 1 comportamento che si vede e 1 che lo contraddice
+  - il campo cosa_si_dice_a_tutti elenca i numeri che tutto il reparto vede e con quale cadenza in giorni
+N29_LEGGE_DELLA_NAVIGAZIONE:
+  absent_when:
+  - il campo orizzonte_di_piano non esiste, cioe il reparto non ha nessun piano oltre la settimana in
+    corso
+  partial_when:
+  - il campo orizzonte_di_piano porta meno di 3 mesi
+  - il campo cadenza_di_revisione non porta nessun numero di giorni
+  - il campo chi_traccia_la_rotta non nomina nessuno
+  complete_when:
+  - il campo orizzonte_di_piano porta almeno 6 mesi
+  - il campo cadenza_di_revisione porta un numero di giorni fra una revisione e la successiva
+  - il campo chi_traccia_la_rotta nomina 1 persona e dice con chi la condivide
+N30_IL_MANSIONARIO_COME_STRUMENTO:
+  absent_when:
+  - il campo dove_vive_il_mansionario non esiste, cioe il reparto non ha un documento operativo unico
+  partial_when:
+  - il campo quando_si_apre elenca meno di 2 momenti
+  - il campo chi_lo_aggiorna non nomina nessuno
+  - il campo cadenza_di_rilettura non porta nessun numero di giorni
+  complete_when:
+  - il campo dove_vive_il_mansionario nomina 1 posto che si apre e si cerca
+  - il campo quando_si_apre elenca almeno 3 momenti della giornata di lavoro
+  - il campo chi_lo_aggiorna nomina 1 persona e dice a che cosa reagisce
+  - il campo cadenza_di_rilettura porta un numero di giorni
+N31_OFFERTA_E_PROVE_DELL_AZIENDA:
+  absent_when:
+  - il campo cosa_vendi non esiste, cioe l'offerta non e scritta in nessun posto che un venditore possa
+    aprire
+  partial_when:
+  - il campo prezzo_e_modalita non porta almeno 1 cifra con le condizioni di pagamento
+  - il campo prove_disponibili raccoglie meno di 3 prove
+  - il campo credenziali non porta nessun numero
+  complete_when:
+  - il campo cosa_vendi dice che trasformazione prometti, a chi e con quale mezzo
+  - il campo prezzo_e_modalita porta la cifra e almeno 2 modalita di pagamento
+  - il campo prove_disponibili raccoglie almeno 5 prove con la cifra e il tempo di ciascuna
+  - il campo credenziali porta almeno 1 numero verificabile
+N32_CLIENTE_IDEALE_DELL_AZIENDA:
+  absent_when:
+  - il campo chi_e_il_lead non esiste, cioe l'azienda non ha messo per iscritto a chi vende
+  partial_when:
+  - il campo chi_e_il_lead non porta almeno 2 tratti che lo distinguono
+  - il campo da_dove_arriva non nomina almeno 1 canale
+  - il campo chi_non_e_cliente non dichiara chi si squalifica
+  complete_when:
+  - il campo chi_e_il_lead porta almeno 3 tratti che lo distinguono
+  - il campo da_dove_arriva nomina i canali con la quota di lead di ciascuno
+  - il campo cosa_gli_manca nomina il problema con cui arriva
+  - il campo chi_non_e_cliente dichiara almeno 2 condizioni di squalifica
+N33_STRUMENTI_E_RECAPITI_DELL_AZIENDA:
+  absent_when:
+  - il campo strumenti_in_uso non esiste, cioe non e scritto da nessuna parte quali strumenti il venditore
+    apre ogni giorno
+  partial_when:
+  - il campo strumenti_in_uso elenca meno di 2 strumenti
+  - il campo dove_stanno_i_documenti non nomina un posto unico
+  - il campo recapiti_di_servizio lascia almeno 1 strumento senza il recapito a cui si chiede aiuto
+  complete_when:
+  - il campo strumenti_in_uso elenca almeno 3 strumenti con l'uso di ciascuno
+  - il campo dove_stanno_i_documenti nomina 1 posto unico da cui si apre tutto
+  - il campo recapiti_di_servizio porta il recapito per ogni strumento
+N34_MATERIALE_SORGENTE_DEL_CORPUS:
+  absent_when:
+  - il campo documenti_di_origine non esiste, cioe non e scritto da quali materiali nasce il metodo dell'azienda
+  partial_when:
+  - il campo documenti_di_origine elenca meno di 2 documenti
+  - il campo dove_sono_conservati non nomina 1 posto unico
+  - il campo chi_li_ha_prodotti lascia almeno 1 documento senza un autore
+  complete_when:
+  - il campo documenti_di_origine elenca i materiali con la data di ciascuno
+  - il campo chi_li_ha_prodotti nomina l'autore di ognuno
+  - il campo dove_sono_conservati nomina 1 posto unico da cui si aprono tutti
+N35_I_CINQUE_LIVELLI_DELLA_LEADERSHIP:
+  absent_when:
+  - il campo livello_dichiarato non esiste, cioe nessuno ha mai detto a che titolo le persone seguono
+    chi le guida
+  partial_when:
+  - il campo livello_dichiarato non e stato dichiarato per almeno 1 dei responsabili
+  - il campo segnale_del_livello non porta nessun comportamento osservabile
+  - il campo cosa_manca_per_salire non dice che cosa manca
+  complete_when:
+  - il campo livello_dichiarato porta 1 livello per ogni responsabile del reparto
+  - il campo segnale_del_livello porta per ognuno almeno 2 comportamenti che si vedono e non si deducono
+  - il campo cosa_manca_per_salire nomina 1 cosa concreta per ciascuno
+N36_IMPERATIVO_DEL_COMANDO:
+  absent_when:
+  - il campo chi_decide_in_stallo non esiste, cioe quando il reparto e diviso nessuno ha il compito di
+    chiudere la questione
+  partial_when:
+  - il campo chi_decide_in_stallo non nomina 1 persona
+  - il campo tempo_massimo_di_stallo non porta nessun numero di ore o di giorni
+  - il campo cosa_succede_dopo non dice se la decisione si discute ancora
+  complete_when:
+  - il campo chi_decide_in_stallo nomina 1 sola persona
+  - il campo tempo_massimo_di_stallo porta il numero di ore o di giorni oltre cui si decide comunque
+  - il campo cosa_succede_dopo dichiara che dopo la decisione si esegue e la discussione si chiude
+N37_IL_CASO_STUDIO_STORICO:
+  absent_when:
+  - il campo caso_di_riferimento non esiste, cioe non c'e nessun caso che il reparto usa come metro comune
+  partial_when:
+  - il campo parallelo_col_reparto non nomina almeno 2 punti in cui il caso somiglia alla situazione del
+    reparto
+  - il campo quando_si_usa non dice in quale occasione si tira fuori
+  complete_when:
+  - il campo caso_di_riferimento nomina 1 caso che tutti nel reparto conoscono
+  - il campo parallelo_col_reparto nomina almeno 3 punti di somiglianza
+  - il campo quando_si_usa dice in quale occasione si racconta
+N38_CRESCERE_CONTRO_EVOLVERE:
+  absent_when:
+  - il campo obiettivo_di_crescita non esiste, cioe non c'e nessun traguardo dichiarato oltre il mese
+    corrente
+  partial_when:
+  - il campo obiettivo_di_crescita non porta nessuna cifra e nessun periodo
+  - il campo cosa_deve_cambiare elenca meno di 2 cose che il reparto deve fare in modo diverso
+  - il campo vincolo_attuale non nomina che cosa oggi tiene fermo il reparto
+  complete_when:
+  - il campo obiettivo_di_crescita porta una cifra e il numero di mesi entro cui arrivarci
+  - il campo cosa_deve_cambiare elenca almeno 3 cose da fare in modo diverso, non solo di piu
+  - il campo vincolo_attuale nomina il vincolo e chi lo puo togliere
+N39_FORMULE_E_PRINCIPI_CARDINE:
+  absent_when:
+  - il campo principi_di_decisione non esiste, cioe chi guida decide caso per caso senza nessun principio
+    dichiarato
+  partial_when:
+  - il campo principi_di_decisione elenca meno di 3 principi
+  - il campo esempio_di_applicazione lascia almeno 1 principio senza una decisione vera in cui e stato
+    usato
+  - il campo chi_li_puo_invocare non dice se valgono anche verso chi guida
+  complete_when:
+  - il campo principi_di_decisione elenca almeno 4 principi scritti come regole e non come massime
+  - il campo esempio_di_applicazione porta per ognuno 1 decisione vera
+  - il campo chi_li_puo_invocare dichiara che valgono anche quando a invocarli e chi non guida
+N41_LE_TRE_LEVE_DELLA_VENDITA:
+  absent_when:
+  - il campo leve_dichiarate non esiste, cioe il reparto non distingue che cosa muove davvero una vendita
+  partial_when:
+  - il campo leve_dichiarate nomina meno di 3 leve
+  - il campo peso_per_leva non porta nessuna percentuale
+  - il campo dove_si_lavora_oggi non dice su quale leva il reparto sta mettendo le ore
+  complete_when:
+  - il campo leve_dichiarate nomina almeno 3 leve
+  - il campo peso_per_leva porta per ognuna una percentuale del risultato
+  - il campo dove_si_lavora_oggi nomina la leva su cui il reparto sta mettendo piu ore e dice se e quella
+    con il peso maggiore
+N42_APERTURA_E_PRESA_DI_CONTROLLO:
+  absent_when:
+  - il campo regole_della_conversazione non esiste, cioe nessuno dichiara all'inizio come andra la chiamata
+  partial_when:
+  - il campo regole_della_conversazione dichiara meno di 2 regole
+  - il campo momento_della_presa non dice in quale minuto o dopo quale passaggio si prende il controllo
+  - il campo segnali_di_perdita non elenca nessun segnale
+  complete_when:
+  - il campo regole_della_conversazione dichiara almeno 3 regole dette a voce all'inizio
+  - il campo momento_della_presa nomina il passaggio esatto
+  - il campo segnali_di_perdita elenca almeno 3 segnali che dicono che il controllo si sta perdendo
+N43_IL_PITCH:
+  absent_when:
+  - il campo struttura_del_pitch non esiste, cioe la presentazione della soluzione va a braccio
+  partial_when:
+  - il campo struttura_del_pitch dichiara meno di 3 passaggi
+  - il campo cosa_si_personalizza non dice quali parti cambiano da lead a lead
+  - il campo durata_prevista non porta nessun numero di minuti
+  complete_when:
+  - il campo struttura_del_pitch dichiara almeno 4 passaggi in sequenza
+  - il campo cosa_si_personalizza nomina almeno 2 parti che cambiano con le informazioni raccolte prima
+  - il campo durata_prevista porta un numero di minuti
+N44_L_ARTE_DELLA_DOMANDA:
+  absent_when:
+  - il campo tipi_di_domanda non esiste, cioe nessuno distingue una domanda dall'altra e si chiede a caso
+  partial_when:
+  - il campo tipi_di_domanda distingue meno di 2 tipi
+  - il campo esempi_per_tipo lascia almeno 1 tipo senza un esempio scritto
+  - il campo errore_piu_frequente non nomina nessun errore osservato
+  complete_when:
+  - il campo tipi_di_domanda distingue almeno 3 tipi con l'obiettivo di ciascuno
+  - il campo esempi_per_tipo porta almeno 2 esempi per tipo
+  - il campo errore_piu_frequente nomina l'errore e il segnale da cui si riconosce in ascolto
+N45_LE_TRE_CERTEZZE_APPLICATE:
+  absent_when:
+  - il campo certezze_dichiarate non esiste, cioe davanti a un no nessuno sa dire quale delle certezze
+    mancava
+  partial_when:
+  - il campo certezze_dichiarate nomina meno di 3 certezze
+  - il campo segnale_per_certezza lascia almeno 1 certezza senza un segnale che dica quando e bassa
+  - il campo leva_per_certezza non dice come si alza
+  complete_when:
+  - il campo certezze_dichiarate nomina tutte e 3 le certezze
+  - il campo segnale_per_certezza porta per ognuna almeno 2 frasi da cui si capisce che quella e bassa
+  - il campo leva_per_certezza dice per ognuna che cosa si fa per alzarla
+N46_RESPONSABILITA_DI_CHI_VENDE:
+  absent_when:
+  - il campo dove_finisce_la_responsabilita non esiste, cioe non e dichiarato di che cosa risponde chi
+    vende e di che cosa no
+  partial_when:
+  - il campo dove_finisce_la_responsabilita non nomina il momento in cui un lead diventa responsabilita
+    del venditore
+  - il campo cosa_non_e_scusa elenca meno di 2 giustificazioni non accettate
+  - il campo come_si_riprende non dice chi parla con chi
+  complete_when:
+  - il campo dove_finisce_la_responsabilita nomina il momento esatto in cui il lead diventa del venditore
+  - il campo cosa_non_e_scusa elenca almeno 3 giustificazioni ricorrenti che il reparto non accetta
+  - il campo come_si_riprende dice chi parla con chi ed entro quanti giorni
+N47_I_CASI_STORICI_DELLA_MENTALITA:
+  absent_when:
+  - il campo casi_usati_in_aula non esiste, cioe chi forma non ha nessun caso fissato e ogni volta ne
+    racconta uno diverso
+  partial_when:
+  - il campo casi_usati_in_aula raccoglie meno di 3 casi
+  - il campo lezione_per_caso lascia almeno 1 caso senza la lezione che deve portare a casa chi ascolta
+  - il campo dove_si_raccontano non dice in quale momento della formazione ciascun caso entra
+  complete_when:
+  - il campo casi_usati_in_aula raccoglie almeno 5 casi
+  - il campo lezione_per_caso porta per ognuno 1 lezione scritta in una frase
+  - il campo dove_si_raccontano nomina per ogni caso il momento della formazione in cui entra
+N48_CHE_COSA_E_LA_MENTALITA:
+  absent_when:
+  - il campo definizione_in_uso non esiste, cioe nel reparto la parola si usa senza che nessuno abbia
+    detto che cosa vuol dire
+  partial_when:
+  - il campo definizione_in_uso non sta in 1 frase che si regge da sola
+  - il campo come_si_misura non nomina nessun risultato osservabile
+  - il campo chi_ne_parla non nomina nessuno
+  complete_when:
+  - il campo definizione_in_uso sta in 1 frase e nomina che cosa cambia nel comportamento
+  - il campo come_si_misura nomina almeno 2 risultati da cui la si vede, e non stati d'animo
+  - il campo chi_ne_parla nomina chi la porta al reparto e ogni quanti giorni
+N49_OBIETTIVO_MENTALITA_ED_EQUILIBRIO:
+  absent_when:
+  - il campo obiettivo_personale non esiste, cioe nessuno ha mai chiesto ai venditori dove vogliono arrivare
+  partial_when:
+  - il campo obiettivo_personale non e stato raccolto per almeno 1 venditore
+  - il campo cadenza_del_confronto non porta nessun numero di giorni
+  - il campo segnali_di_cedimento elenca meno di 2 segnali
+  complete_when:
+  - il campo obiettivo_personale porta per ogni venditore dove vuole arrivare e in quanti mesi
+  - il campo cadenza_del_confronto porta un numero di giorni fra un confronto individuale e il successivo
+  - il campo segnali_di_cedimento elenca almeno 3 segnali che si vedono prima che i numeri scendano
+N50_I_GRADINI_DEL_PERCORSO:
+  absent_when:
+  - il campo gradini_dichiarati non esiste, cioe nel reparto non c'e nessun percorso di crescita scritto
+  partial_when:
+  - il campo gradini_dichiarati elenca meno di 3 gradini
+  - il campo criterio_per_salire lascia almeno 1 gradino senza una condizione misurabile
+  - il campo tempo_medio_per_gradino non porta nessun numero di mesi
+  complete_when:
+  - il campo gradini_dichiarati elenca almeno 3 gradini in sequenza
+  - il campo criterio_per_salire porta per ognuno una condizione con un numero, non un parere
+  - il campo tempo_medio_per_gradino porta il numero di mesi che serve in media per ciascuno
+N51_PONTI_FRA_MENTALITA_E_VENDITA:
+  absent_when:
+  - il campo convinzioni_da_stanare non esiste, cioe nel reparto non si e mai guardato che cosa i venditori
+    credono del prezzo e del rifiuto
+  partial_when:
+  - il campo convinzioni_da_stanare elenca meno di 2 convinzioni
+  - il campo dove_si_vedono non nomina il momento della chiamata in cui si manifestano
+  - il campo chi_le_lavora non nomina nessuno
+  complete_when:
+  - il campo convinzioni_da_stanare elenca almeno 3 convinzioni ricorrenti, per esempio sul prezzo e sul
+    rifiuto
+  - il campo dove_si_vedono nomina per ognuna il momento della chiamata in cui si vede
+  - il campo chi_le_lavora nomina chi ne parla col venditore e ogni quanti giorni
+N52_DIZIONARIO_DEI_DATI_E_DEGLI_STADI:
+  absent_when:
+  - il campo stadi_della_pipeline non esiste, cioe il reparto non ha un elenco degli stadi in cui un lead
+    puo stare
+  partial_when:
+  - il campo stadi_della_pipeline elenca meno di 4 stadi
+  - il campo regola_di_passaggio non dice per almeno 1 stadio che cosa fa entrare un lead e che cosa lo
+    fa uscire
+  - il campo definizione_di_qualificato non porta almeno 3 condizioni
+  - il campo metriche_in_uso elenca meno di 4 metriche con il loro denominatore
+  - il campo soglie_dichiarate lascia senza numero almeno 1 delle 3 soglie che il corpus nomina
+  - il campo dove_vivono_i_numeri non nomina nessun indirizzo
+  complete_when:
+  - il campo stadi_della_pipeline elenca almeno 5 stadi, ognuno con il suo nome esatto come compare nello
+    strumento
+  - il campo regola_di_passaggio dice per ogni stadio che cosa fa entrare un lead e che cosa lo fa uscire
+  - il campo definizione_di_qualificato porta almeno 3 condizioni, e ognuna si puo verificare guardando
+    il contatto
+  - il campo metriche_in_uso elenca almeno 8 metriche, ognuna con il numeratore e il denominatore su cui
+    si calcola
+  - il campo soglie_dichiarate porta un numero per ognuna delle 3 soglie
+  - il campo dove_vivono_i_numeri nomina 1 indirizzo e chi lo tiene aggiornato
+N53_CADENZA_OPERATIVA_DEL_REPARTO:
+  absent_when:
+  - il campo appuntamenti_ricorrenti non esiste, cioe il reparto non ha nessun momento fissato in cui
+    si guarda insieme
+  partial_when:
+  - il campo appuntamenti_ricorrenti elenca meno di 2 appuntamenti
+  - il campo appuntamenti_ricorrenti lascia almeno 1 appuntamento senza il giorno e senza la durata
+  - il campo ordine_del_giorno non porta per almeno 1 appuntamento un elenco di punti
+  - il campo chi_porta_quale_numero nomina meno di 2 persone
+  complete_when:
+  - il campo appuntamenti_ricorrenti elenca almeno 2 appuntamenti, ognuno con il giorno, l ora e la durata
+  - il campo ordine_del_giorno porta per ogni appuntamento almeno 3 punti in sequenza
+  - il campo chi_porta_quale_numero lega ogni numero dell ordine del giorno a 1 persona che lo porta
+  - il campo che_cosa_fa_saltare_un_appuntamento nomina la condizione in cui l appuntamento non si tiene
+    e chi lo decide
+N54_SELEZIONE_E_CANDIDATI:
+  absent_when:
+  - il campo da_dove_arrivano_i_candidati non esiste, cioe il reparto non sa dire per quale via gli arrivano
+    le persone
+  partial_when:
+  - il campo da_dove_arrivano_i_candidati elenca meno di 2 canali
+  - il campo comportamenti_osservati elenca meno di 3 comportamenti, oppure almeno 1 di quelli elencati
+    non si osserva guardando il candidato fare qualcosa
+  - il campo soglia_minima_candidati non porta nessun numero
+  - il campo chi_decide_l_assunzione non nomina nessuno
+  complete_when:
+  - il campo da_dove_arrivano_i_candidati elenca almeno 2 canali, ognuno con quanti candidati ha portato
+    nell ultimo anno
+  - il campo comportamenti_osservati elenca almeno 4 comportamenti, e per ognuno dice in quale momento
+    della selezione lo si vede
+  - il campo soglia_minima_candidati porta 1 numero intero, cioe quanti candidati osservati servono prima
+    che un andamento venga riportato
+  - il campo chi_decide_l_assunzione nomina 1 persona e dice che cosa deve avere davanti per decidere
